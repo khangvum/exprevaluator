@@ -59,11 +59,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>One-Argument</td>
+                    <td style="white-space: nowrap;">One-Argument</td>
                     <td><code>abs</code>, <code>arccos</code>, <code>arcsin</code>, <code>arctan</code>, <code>ceil</code>, <code>cos</code>, <code>exp</code>, <code>floor</code>, <code>lb</code>, <code>ln</code>, <code>log</code>, <code>sin</code>, <code>sqrt</code>, <code>tan</code></td>
                 </tr>
                 <tr>
-                    <td>Two-Argument</td>
+                    <td style="white-space: nowrap;">Two-Argument</td>
                     <td><code>arctan2</code>, <code>max</code>, <code>min</code>, <code>pow</code></td>
                 </tr>
             </tbody>
