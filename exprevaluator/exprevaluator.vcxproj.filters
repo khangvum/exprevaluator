@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\0. utilities">
+      <UniqueIdentifier>{e65a098c-d65f-4168-b317-b0a03a86dc0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1. Token">
+      <UniqueIdentifier>{38189069-b717-41f8-a89f-8a7b73966dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\2. Tokenizer">
+      <UniqueIdentifier>{44832060-4e3c-43d1-bb5d-13ca25baeb77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3. Parser">
+      <UniqueIdentifier>{f97afe9c-73b8-4e03-8ac2-52b54f4616ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\4. RPNEvaluator">
+      <UniqueIdentifier>{9827118b-8bd1-48a6-beb8-5114284a1447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\4. RPNEvaluator">
+      <UniqueIdentifier>{5c084aaf-9796-4204-8d45-d4fddd536026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\5. ExpressionEvaluator">
+      <UniqueIdentifier>{d2cb88ca-ff3d-4a5e-b420-f386683bacb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\5. ExpressionEvaluator">
+      <UniqueIdentifier>{4bbfc40a-f34a-427e-9a28-e50b09c8816c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\0. utilities">
+      <UniqueIdentifier>{62262abd-5088-418f-92ac-d17b4aed27d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\2. Tokenizer">
+      <UniqueIdentifier>{312bda31-cb50-4425-a91c-0845486c6bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\1. Token">
+      <UniqueIdentifier>{02f9d5a1-b6c2-483e-9bc0-4b3be82b2e27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1. Token\Operand">
+      <UniqueIdentifier>{0ffd0af7-5e88-487c-985c-6b506699c2a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1. Token\Operation">
+      <UniqueIdentifier>{f7e4ae8a-5052-4eb8-85bd-ce67f817ba1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\1. Token\PseudoOperation">
+      <UniqueIdentifier>{8bfca8d7-f232-463d-ab16-c9a5eb733a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\1. Token\PseudoOperation">
+      <UniqueIdentifier>{2d3f96ca-3e23-4973-9866-10ffcd755cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\1. Token\Operation">
+      <UniqueIdentifier>{d4e25e06-2b08-441e-ad44-2c7341e46758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\1. Token\Operand">
+      <UniqueIdentifier>{fbcbbe47-1269-4166-8f5c-0be42b99921e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3. Parser">
+      <UniqueIdentifier>{0e183f61-ae3b-4b39-9275-995940c1d76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documents">
+      <UniqueIdentifier>{0e230e8c-7de6-4016-b496-71496ff108d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="exprevaluator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\token.cpp">
+      <Filter>Source Files\1. Token</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\operand.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\operation.cpp">
+      <Filter>Source Files\1. Token\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\boolean.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\integer.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\real.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\variable.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\function.cpp">
+      <Filter>Source Files\1. Token\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\operator.cpp">
+      <Filter>Source Files\1. Token\Operation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\1. Token\src\pseudo_operation.cpp">
+      <Filter>Source Files\1. Token\PseudoOperation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\2. Tokenizer\src\tokenizer.cpp">
+      <Filter>Source Files\2. Tokenizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3. Parser\src\parser.cpp">
+      <Filter>Source Files\3. Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\4. RPNEvaluator\src\RPNEvaluator.cpp">
+      <Filter>Source Files\4. RPNEvaluator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\5. ExpressionEvaluator\src\expression_evaluator.cpp">
+      <Filter>Source Files\5. ExpressionEvaluator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\0. utilities\src\constants.cpp">
+      <Filter>Source Files\0. utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\0. utilities\src\helper.cpp">
+      <Filter>Source Files\0. utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\0. utilities\src\system.cpp">
+      <Filter>Source Files\0. utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="exprevaluator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\operand.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\operation.hpp">
+      <Filter>Header Files\1. Token\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\token.hpp">
+      <Filter>Header Files\1. Token</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\boolean.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\integer.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\real.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\variable.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\function.hpp">
+      <Filter>Header Files\1. Token\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\operator.hpp">
+      <Filter>Header Files\1. Token\Operation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\pseudo_operation.hpp">
+      <Filter>Header Files\1. Token\PseudoOperation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\2. Tokenizer\inc\tokenizer.hpp">
+      <Filter>Header Files\2. Tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3. Parser\inc\parser.hpp">
+      <Filter>Header Files\3. Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\4. RPNEvaluator\inc\RPNEvaluator.hpp">
+      <Filter>Header Files\4. RPNEvaluator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\5. ExpressionEvaluator\inc\expression_evaluator.hpp">
+      <Filter>Header Files\5. ExpressionEvaluator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\0. utilities\inc\constants.hpp">
+      <Filter>Header Files\0. utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\0. utilities\inc\helper.hpp">
+      <Filter>Header Files\0. utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\0. utilities\inc\system.hpp">
+      <Filter>Header Files\0. utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\!docs\Evaluator.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Operand.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Operator.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Parser.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Precedence.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\System Architecture.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Token.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Tokenizer.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\!docs\Sequence Diagram.jpg">
+      <Filter>Documents</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
