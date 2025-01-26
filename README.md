@@ -11,13 +11,13 @@ Type        |   Operators
 Unary       |   Negation (`-x`), Not (`!x`), Factorial (`x!`)
 Arithmetic  |   Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`), Modulus (`%`), Power (`**`)
 Assignment  |   Assignment (`=`)
-Logical     |   And (`&&`), Nand (`!&&`), Or (`||`), Nor (`!||`)
+Logical     |   And (`&&`), Nand (`!&&`), Or (`\|\|`), Nor (`!\|\|`)
 Relational  |   Equality (`==`), Inequality (`!=`), Greater (`>`), GreaterEqual (`>=`), Less (`<`), LessEqual (`<=`)
 Bitwise     |   Xor (`^`), Xnor (`!^`)
 
 -   Includes built-in functions
 
-Type        |   Functions</th>
+Type        |   Functions
 :-----------|:----------------------------------------------------------------
 One-Argument|   `abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `exp`, `floor`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`
 Two-Argument|   `arctan2`, `max`, `min`, `pow`
