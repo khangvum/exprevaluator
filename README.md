@@ -34,56 +34,114 @@ The shunting yard algorithm is a method for parsing ***infix notation*** to ***p
 -   The notation does not need any ***parentheses*** for as long as each operator has a ***fixed number of operands***.
 -   Algorithm:
 
-<pre>
-<b>Set</b> <span style="color:#38761d;"><b>postfix queue</b></span> to empty.
-<b>Set</b> <span style="color:#38761d;"><b>operation stack</b></span> to empty.
-<b>For each</b> token in the infix queue.
-    <b>If</b> the token is an operand <b>then</b>,
+```powershell
+Set postfix queue to empty.
+Set operation stack to empty.
+For each token in the infix queue.
+	If the token is an operand then,
 		Append the token to the postfix queue.
-	<b>Else if</b> the token is a function <b>then</b>,
+	Else if the token is a function then,
 		Push the token on to the operation stack.
-	<b>Else if</b> the token is an argument separator <b>then</b>,
-		<b>While</b> the top meta-operation on the operation stack is not a left parenthesis <b>do</b>,
+	Else if the token is an argument separator then,
+		While the top meta-operation on the operation stack is not a left parenthesis do,
 			Pop the operation from the operation stack.
 			Append that operation to the postfix queue.
-	<b>Else if</b> the token is an left parenthesis <b>then</b>,
+	Else if the token is an left parenthesis then,
 		Push the token on to the operation stack.
-	<b>Else if</b> the token is a right parenthesis <b>then</b>,
-		<b>While</b> the top meta-operation on the operation stack is not a left parenthesis <b>do</b>,
+	Else if the token is a right parenthesis then,
+		While the top meta-operation on the operation stack is not a left parenthesis do,
 			Pop the operation from the operation stack.
 			Append that operation to the postfix queue.
-		<b>If</b> the operation stack is empty <b>then</b>,
-			<b>Exception</b> “Right parenthesis, has no matching left parenthesis”
+		If the operation stack is empty then,
+			Exception “Right parenthesis, has no matching left parenthesis”
 		Pop the left parenthesis from the operation stack.
-		<b>If</b> the top of the operation stack is a function <b>then</b>,
+		If the top of the operation stack is a function then,
 			Pop the function from the operation stack
 			Append that function to the postfix queue.
-	<b>Else if</b> the token is an operator <b>then</b>,
-		<b>While</b> the operation stack is not empty <b>do</b>
-			<b>If</b> the top of the operation stack is not an operator <b>then</b>,
-				<b>Exit</b> the while loop.
-			<b>If</b> the token is a non-associative operator <b>then</b>,
-				<b>Exit</b> the while loop.
-			<b>If</b> the token is a left-associative operator <b>and</b> 
-			has greater precedence than the top of the operation stack <b>then</b>,
-				<b>Exit</b> the while loop.
-			<b>If</b> the token is a right-associative operator <b>and</b> 
-				has greater or equal precedence than the top of the operation stack <b>then</b>,
-				<b>Exit</b> the while loop.
-            Pop an operator from the top of the operation stack.
+	Else if the token is an operator then,
+		While the operation stack is not empty do
+			If the top of the operation stack is not an operator then,
+				Exit the while loop.
+			If the token is a non-associative operator then,
+				Exit the while loop.
+			If the token is a left-associative operator and 
+			has greater precedence than the top of the operation stack then,
+				Exit the while loop.
+			If the token is a right-associative operator and 
+				has greater or equal precedence than the top of the operation stack then,
+				Exit the while loop.
+			Pop an operator from the top of the operation stack.
 			Append that operator to the postfix queue.
-		<b>End while</b>
+		End while
 		Push the token on to the operation stack.
-	<b>Else</b>
-		<b>Exception</b> “Unknown token”.
-<b>End for-each</b>
-<b>While</b> the operation stack is not empty <b>do</b>
-	<b>If</b> the top of the operation stack is a left-parenthesis <b>then</b>,
-		<b>Exception</b> “Missing right-parenthesis”.
+	Else
+		Exception “Unknown token”.
+End for-each
+While the operation stack is not empty do
+	If the top of the operation stack is a left-parenthesis then,
+		Exception “Missing right-parenthesis”.
 	Pop an operator from the top of the operation stack.
 	Append that operator to the postfix queue.
-<b>Return</b> postfix queue
-</pre>
+Return postfix queue
+Set postfix queue to empty.
+Set operation stack to empty.
+For each token in the infix queue.
+	If the token is an operand then,
+		Append the token to the postfix queue.
+	Else if the token is a function then,
+		Push the token on to the operation stack.
+	Else if the token is an argument separator then,
+		While the top meta-operation on the operation stack is not a left parenthesis do,
+			Pop the operation from the operation stack.
+			Append that operation to the postfix queue.
+	Else if the token is an left parenthesis then,
+		Push the token on to the operation stack.
+	Else if the token is a right parenthesis then,
+		While the top meta-operation on the operation stack is not a left parenthesis do,
+			Pop the operation from the operation stack.
+			Append that operation to the postfix queue.
+		If the operation stack is empty then,
+			Exception “Right parenthesis, has no matching left parenthesis”
+		Pop the left parenthesis from the operation stack.
+		If the top of the operation stack is a function then,
+			Pop the function from the operation stack
+			Append that function to the postfix queue.
+	Else if the token is an operator then,
+		While the operation stack is not empty do
+			If the top of the operation stack is not an operator then,
+				Exit the while loop.
+			If the token is a non-associative operator then,
+				Exit the while loop.
+			If the token is a left-associative operator and 
+			has greater precedence than the top of the operation stack then,
+				Exit the while loop.
+			If the token is a right-associative operator and 
+				has greater or equal precedence than the top of the operation stack then,
+				Exit the while loop.
+			Pop an operator from the top of the operation stack.
+			Append that operator to the postfix queue.
+		End while
+		Push the token on to the operation stack.
+	Else
+		Exception “Unknown token”.
+End for-each
+While the operation stack is not empty do
+	If the top of the operation stack is a left-parenthesis then,
+		Exception “Missing right-parenthesis”.
+	Pop an operator from the top of the operation stack.
+	Append that operator to the postfix queue.
+Return postfix queue
+```
+
+-   Example:
+
+Infix notation  |   Postfix Notation (Reverse Polish Notation)
+:--------------:|:---------------------------------------------------------------:
+3 + 4           |   3 4 +
+3 x 6 + 4       |   3 6 x 4 +
+(5 - 6) x 7     |   5 6 - 7 x
+11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
+5 ** 2 ** 3     |   5 2 3 ** **
 
 ## Architecture
 
