@@ -1,9 +1,3 @@
-<style>
-  table {
-    width: 100%;
-  }
-</style>
-
 # exprevaluator
 
 A Windows console application that ***evaluates mathematical expressions*** involving ***multiple operators*** and ***functions***. It supports operations on ***a variety of data types***, including Boolean, Integer, Real, and Variable.
