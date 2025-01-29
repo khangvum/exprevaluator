@@ -32,107 +32,7 @@ The shunting yard algorithm is a method for parsing ***infix notation*** to ***p
 
 -   A mathematical notation in which ***operators follow their operands***.
 -   The notation does not need any ***parentheses*** for as long as each operator has a ***fixed number of operands***.
--   Algorithm:
-
-```powershell
-Set postfix queue to empty.
-Set operation stack to empty.
-For each token in the infix queue.
-	If the token is an operand then,
-		Append the token to the postfix queue.
-	Else if the token is a function then,
-		Push the token on to the operation stack.
-	Else if the token is an argument separator then,
-		While the top meta-operation on the operation stack is not a left parenthesis do,
-			Pop the operation from the operation stack.
-			Append that operation to the postfix queue.
-	Else if the token is an left parenthesis then,
-		Push the token on to the operation stack.
-	Else if the token is a right parenthesis then,
-		While the top meta-operation on the operation stack is not a left parenthesis do,
-			Pop the operation from the operation stack.
-			Append that operation to the postfix queue.
-		If the operation stack is empty then,
-			Exception “Right parenthesis, has no matching left parenthesis”
-		Pop the left parenthesis from the operation stack.
-		If the top of the operation stack is a function then,
-			Pop the function from the operation stack
-			Append that function to the postfix queue.
-	Else if the token is an operator then,
-		While the operation stack is not empty do
-			If the top of the operation stack is not an operator then,
-				Exit the while loop.
-			If the token is a non-associative operator then,
-				Exit the while loop.
-			If the token is a left-associative operator and 
-			has greater precedence than the top of the operation stack then,
-				Exit the while loop.
-			If the token is a right-associative operator and 
-				has greater or equal precedence than the top of the operation stack then,
-				Exit the while loop.
-			Pop an operator from the top of the operation stack.
-			Append that operator to the postfix queue.
-		End while
-		Push the token on to the operation stack.
-	Else
-		Exception “Unknown token”.
-End for-each
-While the operation stack is not empty do
-	If the top of the operation stack is a left-parenthesis then,
-		Exception “Missing right-parenthesis”.
-	Pop an operator from the top of the operation stack.
-	Append that operator to the postfix queue.
-Return postfix queue
-Set postfix queue to empty.
-Set operation stack to empty.
-For each token in the infix queue.
-	If the token is an operand then,
-		Append the token to the postfix queue.
-	Else if the token is a function then,
-		Push the token on to the operation stack.
-	Else if the token is an argument separator then,
-		While the top meta-operation on the operation stack is not a left parenthesis do,
-			Pop the operation from the operation stack.
-			Append that operation to the postfix queue.
-	Else if the token is an left parenthesis then,
-		Push the token on to the operation stack.
-	Else if the token is a right parenthesis then,
-		While the top meta-operation on the operation stack is not a left parenthesis do,
-			Pop the operation from the operation stack.
-			Append that operation to the postfix queue.
-		If the operation stack is empty then,
-			Exception “Right parenthesis, has no matching left parenthesis”
-		Pop the left parenthesis from the operation stack.
-		If the top of the operation stack is a function then,
-			Pop the function from the operation stack
-			Append that function to the postfix queue.
-	Else if the token is an operator then,
-		While the operation stack is not empty do
-			If the top of the operation stack is not an operator then,
-				Exit the while loop.
-			If the token is a non-associative operator then,
-				Exit the while loop.
-			If the token is a left-associative operator and 
-			has greater precedence than the top of the operation stack then,
-				Exit the while loop.
-			If the token is a right-associative operator and 
-				has greater or equal precedence than the top of the operation stack then,
-				Exit the while loop.
-			Pop an operator from the top of the operation stack.
-			Append that operator to the postfix queue.
-		End while
-		Push the token on to the operation stack.
-	Else
-		Exception “Unknown token”.
-End for-each
-While the operation stack is not empty do
-	If the top of the operation stack is a left-parenthesis then,
-		Exception “Missing right-parenthesis”.
-	Pop an operator from the top of the operation stack.
-	Append that operator to the postfix queue.
-Return postfix queue
-```
-
+-   Algorithm: [Shunting Yard Algorithm](!docs/Parser.pdf)
 -   Example:
 
 Infix notation  |   Postfix Notation (Reverse Polish Notation)
@@ -145,4 +45,63 @@ Infix notation  |   Postfix Notation (Reverse Polish Notation)
 
 ## Architecture
 
-![Sequence Diagram](!docs/Sequence%20Diagram.jpg)
+<!-- ![Sequence Diagram](!docs/Sequence%20Diagram.jpg)
+-->
+
+```mermaid
+sequenceDiagram
+    participant Application
+    participant Tokenizer
+    participant Parser
+    participant RPNEvaluator
+
+    Application ->> Tokenizer: Infix expression
+    Tokenizer ->> Application: Tokenized infix expression
+
+    Application ->> Parser: Tokenized infix expression
+    Parser ->> Application: Tokenized postfix expression
+
+    Application ->> RPNEvaluator: Tokenized postfix expression
+    RPNEvaluator ->> Application: Evaluated result of expression
+```
+
+## Token Hierarchy
+
+```mermaid
+classDiagram
+    class Token
+
+    class Operand {
+        +perform_addition(valueStack)
+    }
+
+    class Operation {
+        +perform(valueStack)
+    }
+
+    class PseudoOperation
+
+    class Operator {
+        +precedence(): Precedence Category
+    }
+
+    class Function
+
+    class Parenthesis
+
+    class ArgumentSeparator
+
+    class LeftParenthesis
+
+    class RightParenthesis
+
+    Token <|-- Operand
+    Token <|-- Operation
+    Token <|-- PseudoOperation
+    PseudoOperation <|-- Parenthesis
+    PseudoOperation <|-- ArgumentSeparator
+    Parenthesis <|-- LeftParenthesis
+    Parenthesis <|-- RightParenthesis
+    Operation <|-- Operator
+    Operation <|-- Function
+```
