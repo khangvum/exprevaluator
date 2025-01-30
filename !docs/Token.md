@@ -1,7 +1,7 @@
+# Token
+
 ```mermaid
 classDiagram
-    note "Token<br>©2025, Khang Vu"
-
     class Token
 
     class Operand {
