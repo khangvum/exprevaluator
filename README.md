@@ -43,26 +43,38 @@ Infix notation  |   Postfix Notation (Reverse Polish Notation)
 11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
 5 ** 2 ** 3     |   5 2 3 ** **
 
-## Architecture
-
-<!-- ![Sequence Diagram](!docs/Sequence%20Diagram.jpg)
--->
+## Sequence Diagram
 
 ```mermaid
 sequenceDiagram
-    participant Application
+    actor Application
     participant Tokenizer
     participant Parser
     participant RPNEvaluator
 
     Application ->> Tokenizer: Infix expression
-    Tokenizer ->> Application: Tokenized infix expression
 
-    Application ->> Parser: Tokenized infix expression
-    Parser ->> Application: Tokenized postfix expression
+    Tokenizer ->> Parser: Tokenized infix<br>expression
 
-    Application ->> RPNEvaluator: Tokenized postfix expression
-    RPNEvaluator ->> Application: Evaluated result of expression
+    Parser ->> RPNEvaluator: Tokenized postfix<br>expression
+
+    RPNEvaluator ->> Application: Evaluated result<br>of expression
+```
+
+```mermaid
+sequenceDiagram
+    actor Application
+    participant Tokenizer
+    participant Parser
+    participant RPNEvaluator
+
+    Application ->> Tokenizer: 3 + 5 * 4
+
+    Tokenizer ->> Parser: Integer(3), Addition,<br>Integer(5),<br>Multiplication, Integer(4)
+
+    Parser ->> RPNEvaluator: Integer(3), Integer(5),<br>Integer(4),<br>Multiplication,Addition
+
+    RPNEvaluator ->> Application: Integer(23)
 ```
 
 ## Token Hierarchy
