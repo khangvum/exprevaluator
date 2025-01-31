@@ -184,36 +184,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\!docs\Evaluator.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Operand.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Operator.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Parser.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Precedence.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\System Architecture.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Token.pdf">
-      <Filter>Documents</Filter>
-    </None>
-    <None Include="..\!docs\Tokenizer.pdf">
-      <Filter>Documents</Filter>
-    </None>
     <None Include="..\.gitignore" />
     <None Include="..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\!docs\Sequence Diagram.jpg">
-      <Filter>Documents</Filter>
-    </Image>
   </ItemGroup>
 </Project>

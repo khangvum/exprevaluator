@@ -187,19 +187,8 @@
     <ClInclude Include="exprevaluator.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\!docs\Evaluator.pdf" />
-    <None Include="..\!docs\Operand.pdf" />
-    <None Include="..\!docs\Operator.pdf" />
-    <None Include="..\!docs\Parser.pdf" />
-    <None Include="..\!docs\Precedence.pdf" />
-    <None Include="..\!docs\System Architecture.pdf" />
-    <None Include="..\!docs\Token.pdf" />
-    <None Include="..\!docs\Tokenizer.pdf" />
     <None Include="..\.gitignore" />
     <None Include="..\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\!docs\Sequence Diagram.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
