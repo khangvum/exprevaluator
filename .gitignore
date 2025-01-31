@@ -456,3 +456,13 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 /2. scan/inc/ThreadPool.hpp
+/!docs/Double Dispatch.pdf
+/!docs/Evaluator.pdf
+/!docs/Operand.pdf
+/!docs/Operator.pdf
+/!docs/Parser.pdf
+/!docs/Precedence.pdf
+/!docs/Sequence Diagram.jpg
+/!docs/System Architecture.pdf
+/!docs/Token.pdf
+/!docs/Tokenizer.pdf
