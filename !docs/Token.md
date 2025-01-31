@@ -1,7 +1,3 @@
-# Token
-
-©2025, Khang Vu
-
 ```mermaid
 ---
 title: Token
