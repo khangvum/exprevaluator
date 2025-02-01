@@ -189,9 +189,12 @@
   <ItemGroup>
     <None Include="..\!docs\Double Dispatch.md" />
     <None Include="..\!docs\Evaluator.pdf" />
+    <None Include="..\!docs\Operand.md" />
+    <None Include="..\!docs\Operator.md" />
     <None Include="..\!docs\Parser.pdf" />
     <None Include="..\!docs\Precedence.pdf" />
     <None Include="..\!docs\Sequence Diagram.md" />
+    <None Include="..\!docs\System Architecture.md" />
     <None Include="..\!docs\Token.md" />
     <None Include="..\!docs\Tokenizer.pdf" />
     <None Include="..\.gitignore" />
