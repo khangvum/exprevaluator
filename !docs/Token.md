@@ -5,9 +5,13 @@ title: Token
 classDiagram
     class Token
 
-    class Operand
+    class Operand {
+        +perform_addition(value_stack)
+    }
 
-    class Operation
+    class Operation {
+        +perform(value_stack)
+    }
 
     class PseudoOperation
 
