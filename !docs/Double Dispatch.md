@@ -26,7 +26,6 @@ classDiagram
     class Addition {
         +perform(value_stack)
     }
-
     class Multiplication {
         +perform(value_stack)
     }
@@ -40,12 +39,10 @@ classDiagram
         +perform_addition(value_stack)
         +perform_multiplication(value_stack)
     }
-
     class Real {
         +perform_addition(value_stack)
         +perform_multiplication(value_stack)
     }
-
     class Boolean {
         +perform_addition(value_stack)
         +perform_multiplication(value_stack)

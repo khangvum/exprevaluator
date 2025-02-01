@@ -5,28 +5,17 @@ title: Token
 classDiagram
     class Token
 
-    class Operand {
-        +perform_addition(value_stack)
-    }
-
-    class Operation {
-        +perform(value_stack)
-    }
-
+    class Operand
+    class Operation
     class PseudoOperation
 
-    class Operator {
-        +precedence() Precedence
-    }
-
+    class Operator
     class Function
 
     class Parenthesis
-
     class ArgumentSeparator
 
     class LeftParenthesis
-
     class RightParenthesis
 
     Token <|-- Operand
