@@ -1,8 +1,6 @@
 ### C++ ###
 ## 1. User-defined files
-*.~ml
-*.uml
-*.drawio
+!docs\old
 
 ## 2. System files
 # Prerequisites
