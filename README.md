@@ -43,6 +43,39 @@ Infix notation  |   Postfix Notation (Reverse Polish Notation)
 11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
 5 ** 2 ** 3     |   5 2 3 ** **
 
+## Architecture
+
+```mermaid
+classDiagram
+    class ExpressionEvaluator {
+        +evaluate(expression : string) Token
+    }
+
+    class Tokenizer {
+        +tokenize(expression : string) TokenList
+    }
+
+    class Parser {
+        +parse(infix_tokens : TokenList) TokenList
+    }
+
+    class RPNEvaluator {
+        +evaluate(postfix_tokens : TokenList) : Token
+    }
+
+    class TokenList
+
+    class Token
+
+    ExpressionEvaluator *-- Tokenizer
+    ExpressionEvaluator *-- Parser
+    ExpressionEvaluator *-- RPNEvaluator
+    Tokenizer ..> TokenList
+    Parser ..> TokenList
+    RPNEvaluator ..> TokenList
+    TokenList o-- Token
+```
+
 ## Sequence Diagram
 
 ```mermaid
@@ -76,3 +109,14 @@ sequenceDiagram
 
     RPNEvaluator ->> Application: Integer(23)
 ```
+
+-   [Tokenizer](!docs/Tokenizer.pdf)
+-   [Parser](!docs/Parser.pdf)
+-   [RPNEvaluator](!docs/Evaluator.pdf)
+
+## References
+
+-   [Token](!docs/Token.md)
+-   [Operand](!docs/Operand.md)
+-   [Operator](!docs/Operator.md)
+-   [Double Dispatch](!docs/Double%20Dispatch.md)
