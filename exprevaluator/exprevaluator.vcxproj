@@ -187,6 +187,13 @@
     <ClInclude Include="exprevaluator.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\!docs\Double Dispatch.md" />
+    <None Include="..\!docs\Evaluator.pdf" />
+    <None Include="..\!docs\Parser.pdf" />
+    <None Include="..\!docs\Precedence.pdf" />
+    <None Include="..\!docs\Sequence Diagram.md" />
+    <None Include="..\!docs\Token.md" />
+    <None Include="..\!docs\Tokenizer.pdf" />
     <None Include="..\.gitignore" />
     <None Include="..\README.md" />
   </ItemGroup>

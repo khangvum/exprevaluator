@@ -186,5 +186,26 @@
   <ItemGroup>
     <None Include="..\.gitignore" />
     <None Include="..\README.md" />
+    <None Include="..\!docs\Token.md">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Double Dispatch.md">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Evaluator.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Parser.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Precedence.pdf">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Sequence Diagram.md">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Tokenizer.pdf">
+      <Filter>Documents</Filter>
+    </None>
   </ItemGroup>
 </Project>
