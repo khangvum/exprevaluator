@@ -105,7 +105,7 @@ sequenceDiagram
 
     Tokenizer ->> Parser: Integer(3), Addition,<br>Integer(5),<br>Multiplication, Integer(4)
 
-    Parser ->> RPNEvaluator: Integer(3), Integer(5),<br>Integer(4),<br>Multiplication,Addition
+    Parser ->> RPNEvaluator: Integer(3), Integer(5),<br>Integer(4),<br>Multiplication, Addition
 
     RPNEvaluator ->> Application: Integer(23)
 ```
