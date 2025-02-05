@@ -1,10 +1,10 @@
 # exprevaluator
 
-A Windows console application that ***evaluates mathematical expressions*** involving ***multiple operators*** and ***functions***. It supports operations on ***a variety of data types***, including Boolean, Integer, Real, and Variable.
+A Windows console application that **_evaluates mathematical expressions_** involving **_multiple operators_** and **_functions_**. It supports operations on **_a variety of data types_**, including Boolean, Integer, Real, and Variable.
 
 ## Features
 
--   Supports ***various operators***:
+-   Supports **_various operators_**:
 
 Type            |   Operators
 :---------------|:----------------------------------------------------------------
@@ -15,23 +15,24 @@ Type            |   Operators
 **Relational**  |   Equality (`==`), Inequality (`!=`), Greater (`>`), GreaterEqual (`>=`), Less (`<`), LessEqual (`<=`)
 **Bitwise**     |   Xor (`^`), Xnor (`!^`)
 
--   Includes ***built-in functions***:
+-   Includes **_built-in functions_**:
 
 Type            |   Functions
 :---------------|:----------------------------------------------------------------
 **One-Argument**|   `abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `exp`, `floor`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`
 **Two-Argument**|   `arctan2`, `max`, `min`, `pow`
 
--   Handles ***multiple data types***: Boolean, Integer, Real, and Variable.
--   Supports ***nested expressions*** and ***parentheses*** for complex calculations.
--   Simple, fast, and lightweight ***console-based*** interface.
+-   Handles **_multiple data types_**: Boolean, Integer, Real, and Variable.
+-   Supports **_nested expressions_** and **_parentheses_** for complex calculations.
+-   Simple, fast, and lightweight **_console-based_** interface.
 
 ## Shunting Yard Algorithm
 
-The shunting yard algorithm is a method for parsing ***infix notation*** to ***postfix notation***, also known as ***reverse Polish notation*** (***RPN***):
+The Shunting Yard Algorithm is a method for parsing **_infix notation_** (Standard mathematical expressions) to **_postfix notation_**, also known as **_reverse Polish notation_** (**_RPN_**). Given the fact that computers cannot naturally handle **_parentheses_** and **_operator precedence_** the way human do, this conversion leverages **_postfix notation_** to simplify expression evaluation as it allows for **_stack-based_** evaluation, making expression parsing and calculation simpler and more efficient.
 
--   A mathematical notation in which ***operators follow their operands***.
--   The notation does not need any ***parentheses*** for as long as each operator has a ***fixed number of operands***.
+-   Postfix notation is a mathematical notation in which **_operators follow their operands_**.
+-   The notation does not need any **_parentheses_** for as long as each operator has a **_fixed number of operands_**.
+-   This program implements the algorithm to allow users to input mathematical expressions in a **_familiar format_** (infix) while internally converting them to an **_efficiently computable format_** (postfix).
 -   Algorithm: [Shunting Yard Algorithm](!docs/Parser.pdf)
 -   Example:
 
@@ -43,12 +44,12 @@ Infix notation  |   Postfix Notation (Reverse Polish Notation)
 11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
 5 ** 2 ** 3     |   5 2 3 ** **
 
-## Boost.Multiprecision for Arbitrary Precision & Large Numbers
+## Boost.Multiprecision for Arbitrary Precision and Large Numbers
 
-For ***high precision*** & ***handling large numbers*** beyond those of C++ standard built-in types like `std::int64_t` or `double`, the program utilizes ***Boost.Multiprecision*** library:
+For **_high precision_** and **_handling large numbers_** beyond those of C++ standard built-in types like `std::int64_t` or `double`, the program utilizes **_Boost.Multiprecision_** library:
 
 -   `boost::multiprecision::cpp_int`:
-    -   An ***arbitrary-precision*** integer type, constrained only by ***available memory***.
+    -   An **_arbitrary-precision_** integer type, constrained only by **_available memory_**.
     -   Comparison:
 
 Type            |   Range
@@ -57,12 +58,12 @@ Type            |   Range
 `cpp_int`       |   Effectively unlimited, constrained only by available memory
 
 -   `boost::multiprecision::number<boost::multiprecision::cpp_dec_float<1000, int32_t, void>>`:
-    -   ***High-precision*** floating-point arithmetic, providing up to ***1000 decimal places*** of precision.
+    -   **_High-precision_** floating-point arithmetic, providing up to **_1000 decimal places_** of precision.
     -   Comparison:
 
 Type                    |   Maximum Precision   |   Range
 :----------------------:|:---------------------:|:-------------------------------
-`double`                |   15-17               |   ±1.8 × 10³⁰⁸
+`double`                |   15-17               |   ±1.8 × 10<sup>308</sup>
 `cpp_dec_float<1000>`   |   1000                |   Effectively unlimited, constrained only by available memory
 
 ## Architecture
