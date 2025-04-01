@@ -185,6 +185,7 @@
     <ClInclude Include="..\4. RPNEvaluator\inc\RPNEvaluator.hpp" />
     <ClInclude Include="..\5. ExpressionEvaluator\inc\expression_evaluator.hpp" />
     <ClInclude Include="exprevaluator.hpp" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\!docs\Double Dispatch.md" />
@@ -199,6 +200,12 @@
     <None Include="..\!docs\Tokenizer.pdf" />
     <None Include="..\.gitignore" />
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="exprevaluator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\exprevaluator.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
