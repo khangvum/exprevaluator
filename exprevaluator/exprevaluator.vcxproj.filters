@@ -195,9 +195,6 @@
     <None Include="..\!docs\Double Dispatch.md">
       <Filter>Documents</Filter>
     </None>
-    <None Include="..\!docs\Evaluator.pdf">
-      <Filter>Documents</Filter>
-    </None>
     <None Include="..\!docs\Parser.pdf">
       <Filter>Documents</Filter>
     </None>
@@ -217,6 +214,9 @@
       <Filter>Documents</Filter>
     </None>
     <None Include="..\!docs\System Architecture.md">
+      <Filter>Documents</Filter>
+    </None>
+    <None Include="..\!docs\Evaluator.pdf">
       <Filter>Documents</Filter>
     </None>
   </ItemGroup>

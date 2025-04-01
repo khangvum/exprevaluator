@@ -1,5 +1,6 @@
 ### C++ ###
 ## 1. User-defined files
+*.pdf
 
 ## 2. System files
 # Prerequisites
@@ -449,3 +450,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/!docs/Evaluator.pdf
+/!docs/Parser.pdf
+/!docs/Precedence.pdf
+/!docs/Tokenizer.pdf
