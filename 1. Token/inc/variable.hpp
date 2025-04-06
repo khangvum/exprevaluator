@@ -24,7 +24,7 @@
 
 
 #include "operand.hpp"
-<<<<<<< HEAD
+
 namespace exprevaluator {
 	// Variable class
 	class Variable : public Operand {
@@ -40,19 +40,3 @@ namespace exprevaluator {
 		[[nodiscard]] string_type	str() const override;
 	};
 }	// End of namespace exprevaluator
-=======
-
-// Variable class
-class Variable : public Operand {
-public:
-	using value_type = Operand::pointer_type;
-	DEF_POINTER_TYPE(Variable)
-private:
-	value_type	value_;
-public:
-	constexpr Variable() = default;
-	[[nodiscard]]	value_type	value() const { return value_; }
-					void		set(const value_type& value) { value_ = value; }
-	[[nodiscard]]	string_type	str() const override;
-};
->>>>>>> origin/master
