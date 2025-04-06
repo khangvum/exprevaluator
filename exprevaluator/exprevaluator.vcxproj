@@ -66,6 +66,13 @@
     <ClInclude Include="..\4. RPNEvaluator\inc\RPNEvaluator.hpp" />
     <ClInclude Include="..\5. ExpressionEvaluator\inc\expression_evaluator.hpp" />
     <ClInclude Include="exprevaluator.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="exprevaluator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\exprevaluator.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
