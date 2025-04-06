@@ -22,7 +22,6 @@
 #include "../../3. Parser/inc/parser.hpp"
 #include "../../4. RPNEvaluator/inc/RPNEvaluator.hpp"
 
-<<<<<<< HEAD
 namespace exprevaluator {
 	class ExpressionEvaluator {
 	public:
@@ -36,16 +35,3 @@ namespace exprevaluator {
 		[[nodiscard]] result_type evaluate(const expression_type& expression);
 	};
 }	// End of namespace exprevaluator
-=======
-class ExpressionEvaluator {
-public:
-	using expression_type = Token::string_type;
-	using result_type = Token::pointer_type;
-private:
-	Tokenizer		tokenizer_;
-	Parser			parser_;
-	RPNEvaluator	rpn_evaluator_;
-public:
-	[[nodiscard]] result_type evaluate(const expression_type& expression);
-};
->>>>>>> origin/master

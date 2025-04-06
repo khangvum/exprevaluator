@@ -21,7 +21,6 @@
 #include "../../1. Token/inc/operand.hpp"
 #include "../../1. Token/inc/operation.hpp"
 
-<<<<<<< HEAD
 namespace exprevaluator {
 	class RPNEvaluator {
 		// Block copy operator & constructor
@@ -35,16 +34,3 @@ namespace exprevaluator {
 		[[nodiscard]] Operand::pointer_type evaluate(const TokenList& postfix_tokens);
 	};
 }	// End of namespace exprevaluator
-=======
-class RPNEvaluator {
-	// Block copy operator & constructor
-	RPNEvaluator(const RPNEvaluator&) = delete;
-	RPNEvaluator& operator = (const RPNEvaluator&) = delete;
-
-	// Attribute
-	Operation::map_type results_;
-public:
-	RPNEvaluator() = default;
-	[[nodiscard]] Operand::pointer_type evaluate(const TokenList& postfix_tokens);
-};
->>>>>>> origin/master
