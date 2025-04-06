@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{cdd0915f-266a-4ed0-a7a0-f13da4f0d5f8}</ProjectGuid>
+    <RootNamespace>exprevaluator</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\local\boost_1_83_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\local\boost_1_83_0\lib32-msvc-14.3;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\local\boost_1_83_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\local\boost_1_83_0\lib32-msvc-14.3;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\local\boost_1_83_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\local\boost_1_83_0\lib64-msvc-14.3;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\local\boost_1_83_0;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\local\boost_1_83_0\lib64-msvc-14.3;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\0. utilities\src\calendar.cpp" />
+    <ClCompile Include="..\0. utilities\src\constants.cpp" />
+    <ClCompile Include="..\0. utilities\src\helper.cpp" />
+    <ClCompile Include="..\0. utilities\src\julian_day.cpp" />
+    <ClCompile Include="..\0. utilities\src\system.cpp" />
+    <ClCompile Include="..\0. utilities\src\time_of_day.cpp" />
+    <ClCompile Include="..\1. Token\src\boolean.cpp" />
+    <ClCompile Include="..\1. Token\src\function.cpp" />
+    <ClCompile Include="..\1. Token\src\gregorian.cpp" />
+    <ClCompile Include="..\1. Token\src\integer.cpp" />
+    <ClCompile Include="..\1. Token\src\operand.cpp" />
+    <ClCompile Include="..\1. Token\src\operation.cpp" />
+    <ClCompile Include="..\1. Token\src\operator.cpp" />
+    <ClCompile Include="..\1. Token\src\pseudo_operation.cpp" />
+    <ClCompile Include="..\1. Token\src\real.cpp" />
+    <ClCompile Include="..\1. Token\src\token.cpp" />
+    <ClCompile Include="..\1. Token\src\variable.cpp" />
+    <ClCompile Include="..\2. Tokenizer\src\tokenizer.cpp" />
+    <ClCompile Include="..\3. Parser\src\parser.cpp" />
+    <ClCompile Include="..\4. RPNEvaluator\src\RPNEvaluator.cpp" />
+    <ClCompile Include="..\5. ExpressionEvaluator\src\expression_evaluator.cpp" />
+    <ClCompile Include="exprevaluator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\0. utilities\inc\calendar.hpp" />
+    <ClInclude Include="..\0. utilities\inc\constants.hpp" />
+    <ClInclude Include="..\0. utilities\inc\helper.hpp" />
+    <ClInclude Include="..\0. utilities\inc\julian_date.hpp" />
+    <ClInclude Include="..\0. utilities\inc\system.hpp" />
+    <ClInclude Include="..\0. utilities\inc\time_of_day.hpp" />
+    <ClInclude Include="..\0. utilities\utilities.hpp" />
+    <ClInclude Include="..\1. Token\inc\boolean.hpp" />
+    <ClInclude Include="..\1. Token\inc\function.hpp" />
+    <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
+    <ClInclude Include="..\1. Token\inc\integer.hpp" />
+    <ClInclude Include="..\1. Token\inc\operand.hpp" />
+    <ClInclude Include="..\1. Token\inc\operation.hpp" />
+    <ClInclude Include="..\1. Token\inc\operator.hpp" />
+    <ClInclude Include="..\1. Token\inc\pseudo_operation.hpp" />
+    <ClInclude Include="..\1. Token\inc\real.hpp" />
+    <ClInclude Include="..\1. Token\inc\token.hpp" />
+    <ClInclude Include="..\1. Token\inc\variable.hpp" />
+    <ClInclude Include="..\2. Tokenizer\inc\tokenizer.hpp" />
+    <ClInclude Include="..\3. Parser\inc\parser.hpp" />
+    <ClInclude Include="..\4. RPNEvaluator\inc\RPNEvaluator.hpp" />
+    <ClInclude Include="..\5. ExpressionEvaluator\inc\expression_evaluator.hpp" />
+    <ClInclude Include="exprevaluator.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\!docs\Double Dispatch.md" />
+    <None Include="..\!docs\Evaluator.pdf" />
+    <None Include="..\!docs\Operand.md" />
+    <None Include="..\!docs\Operator.md" />
+    <None Include="..\!docs\Parser.pdf" />
+    <None Include="..\!docs\Precedence.pdf" />
+    <None Include="..\!docs\Sequence Diagram.md" />
+    <None Include="..\!docs\System Architecture.md" />
+    <None Include="..\!docs\Token.md" />
+    <None Include="..\!docs\Tokenizer.pdf" />
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="exprevaluator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resources\exprevaluator.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

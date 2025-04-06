@@ -1,0 +1,7 @@
+# User-defined files
+*.pdf
+
+# System files
+.vs
+.vscode
+x64
