@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="..\0. utilities\src\calendar.cpp" />
     <ClCompile Include="..\0. utilities\src\constants.cpp" />
     <ClCompile Include="..\0. utilities\src\helper.cpp" />
@@ -156,6 +157,13 @@
     <ClCompile Include="..\1. Token\src\boolean.cpp" />
     <ClCompile Include="..\1. Token\src\function.cpp" />
     <ClCompile Include="..\1. Token\src\gregorian.cpp" />
+=======
+    <ClCompile Include="..\0. utilities\src\constants.cpp" />
+    <ClCompile Include="..\0. utilities\src\helper.cpp" />
+    <ClCompile Include="..\0. utilities\src\system.cpp" />
+    <ClCompile Include="..\1. Token\src\boolean.cpp" />
+    <ClCompile Include="..\1. Token\src\function.cpp" />
+>>>>>>> origin/master
     <ClCompile Include="..\1. Token\src\integer.cpp" />
     <ClCompile Include="..\1. Token\src\operand.cpp" />
     <ClCompile Include="..\1. Token\src\operation.cpp" />
@@ -171,6 +179,7 @@
     <ClCompile Include="exprevaluator.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="..\0. utilities\inc\calendar.hpp" />
     <ClInclude Include="..\0. utilities\inc\constants.hpp" />
     <ClInclude Include="..\0. utilities\inc\helper.hpp" />
@@ -181,6 +190,13 @@
     <ClInclude Include="..\1. Token\inc\boolean.hpp" />
     <ClInclude Include="..\1. Token\inc\function.hpp" />
     <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
+=======
+    <ClInclude Include="..\0. utilities\inc\constants.hpp" />
+    <ClInclude Include="..\0. utilities\inc\helper.hpp" />
+    <ClInclude Include="..\0. utilities\inc\system.hpp" />
+    <ClInclude Include="..\1. Token\inc\boolean.hpp" />
+    <ClInclude Include="..\1. Token\inc\function.hpp" />
+>>>>>>> origin/master
     <ClInclude Include="..\1. Token\inc\integer.hpp" />
     <ClInclude Include="..\1. Token\inc\operand.hpp" />
     <ClInclude Include="..\1. Token\inc\operation.hpp" />

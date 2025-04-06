@@ -126,6 +126,7 @@
     <ClCompile Include="..\0. utilities\src\system.cpp">
       <Filter>Source Files\0. utilities</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\1. Token\src\gregorian.cpp">
       <Filter>Source Files\1. Token\Operand</Filter>
     </ClCompile>
@@ -138,6 +139,8 @@
     <ClCompile Include="..\0. utilities\src\calendar.cpp">
       <Filter>Source Files\0. utilities</Filter>
     </ClCompile>
+=======
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="exprevaluator.hpp">
@@ -197,6 +200,7 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\0. utilities\inc\calendar.hpp">
       <Filter>Header Files\0. utilities</Filter>
     </ClInclude>
@@ -212,6 +216,8 @@
     <ClInclude Include="..\0. utilities\utilities.hpp">
       <Filter>Header Files\0. utilities</Filter>
     </ClInclude>
+=======
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />

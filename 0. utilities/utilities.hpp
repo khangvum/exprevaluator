@@ -28,9 +28,15 @@
 
   ============================================================= */
 
+<<<<<<< HEAD
 #include "inc/calendar.hpp"
 #include "inc/constants.hpp"
 #include "inc/helper.hpp"
 #include "inc/julian_date.hpp"
 #include "inc/system.hpp"
 #include "inc/time_of_day.hpp"
+=======
+#include "inc/constants.hpp"
+#include "inc/helper.hpp"
+#include "inc/system.hpp"
+>>>>>>> origin/master

@@ -18,6 +18,7 @@
 
   ============================================================= */
 
+<<<<<<< HEAD
 #include <cmath>
 #include <string>
 
@@ -41,3 +42,10 @@ namespace exprevaluator {
 		inline double jwday(double j) { return mod(floor(j + 1.5), 7.0); }
 	}	// End of namespace utility
 }	// End of namespace exprevaluator
+=======
+#include <string>
+
+/*	\brief		Print the title of the program 
+*/
+void print_title();
+>>>>>>> origin/master

@@ -23,6 +23,7 @@
 #include "../inc/variable.hpp"
 using namespace std;
 
+<<<<<<< HEAD
 namespace exprevaluator {
 	[[nodiscard]] Variable::string_type Variable::str() const {
 		if (!value_)
@@ -30,3 +31,10 @@ namespace exprevaluator {
 		return value_->str();
 	}
 }	// End of namespace exprevaluator
+=======
+[[nodiscard]] Variable::string_type Variable::str() const {
+	if (!value_)
+		return Variable::string_type("Variable: null");
+	return value_->str();
+}
+>>>>>>> origin/master

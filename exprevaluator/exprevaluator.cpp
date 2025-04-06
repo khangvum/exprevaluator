@@ -19,7 +19,10 @@
 
 #include "exprevaluator.hpp"
 using namespace std;
+<<<<<<< HEAD
 using namespace exprevaluator;
+=======
+>>>>>>> origin/master
 
 int main()
 {
