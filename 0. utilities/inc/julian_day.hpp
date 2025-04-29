@@ -84,14 +84,29 @@ namespace exprevaluator {
 	constexpr detail::packaged_month_real months(float months) { return detail::packaged_month_real(months); }
 	template <typename T> constexpr detail::packaged_month_integer months(T months) { return detail::packaged_month_integer(month_t(months)); }
 
+	// Jd + (real months)
+	constexpr Jd operator + (Jd const& date, detail::packaged_month_real const& month) {
+		return Jd(date.jd() + month.months_ * EARTH_ORBITAL_PERIOD_DAYS);
+	}
+	// Jd - (real months)
+	constexpr Jd operator - (Jd const& date, detail::packaged_month_real const& month) {
+		return Jd(date.jd() - month.months_ * EARTH_ORBITAL_PERIOD_DAYS);
+	}
+	// Jd + (integer months)
+	constexpr Jd operator + (Jd const& date, detail::packaged_month_integer const& month) {
+		return Jd(date.jd() + month.months_ * EARTH_ORBITAL_PERIOD_DAYS);
+	}
+	// Jd - (integer months)
+	constexpr Jd operator - (Jd const& date, detail::packaged_month_integer const& month) {
+		return Jd(date.jd() - month.months_ * EARTH_ORBITAL_PERIOD_DAYS);
+	}
+
 	// Year addition/subtraction
 	namespace detail {
-		/** Year as integer number wrapper. */
 		struct packaged_year_integer {
 			year_t years_;
 			constexpr packaged_year_integer(year_t years) : years_(years) {}
 		};
-		/** Year as real number wrapper. */
 		struct packaged_year_real {
 			double years_;
 			constexpr packaged_year_real(double years) : years_(years) {}
@@ -104,19 +119,19 @@ namespace exprevaluator {
 	// Wrap all other literals into an integer year package
 	template<typename T> constexpr detail::packaged_year_integer years(T years) { return detail::packaged_year_integer(static_cast<year_t>(years)); }
 
-	// - Jd + (real years)
+	// Jd + (real years)
 	constexpr Jd operator + (Jd const& date, detail::packaged_year_real const& year) {
 		return Jd(date.jd() + year.years_ * EARTH_ORBITAL_PERIOD_DAYS);
 	}
-	// - Jd - (real years)
+	// Jd - (real years)
 	constexpr Jd operator - (Jd const& date, detail::packaged_year_real const& year) {
 		return Jd(date.jd() - year.years_ * EARTH_ORBITAL_PERIOD_DAYS);
 	}
-	// - Jd + (integer years)
+	// Jd + (integer years)
 	constexpr Jd operator + (Jd const& date, detail::packaged_year_integer const& year) {
 		return Jd(date.jd() + year.years_ * EARTH_ORBITAL_PERIOD_DAYS);
 	}
-	// - Jd - (integer years)
+	// Jd - (integer years)
 	constexpr Jd operator - (Jd const& date, detail::packaged_year_integer const& year) {
 		return Jd(date.jd() - year.years_ * EARTH_ORBITAL_PERIOD_DAYS);
 	}
