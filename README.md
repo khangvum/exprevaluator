@@ -7,7 +7,7 @@ A Windows console application that **_evaluates mathematical expressions_** invo
 -   Supports **_various operators_**:
 
 Type            |   Operators
-:---------------|:----------------------------------------------------------------
+:--------------:|:----------------------------------------------------------------
 **Unary**       |   Negation (`-x`), Not (`!x`), Factorial (`x!`)
 **Arithmetic**  |   Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`), Modulus (`%`), Power (`**`)
 **Assignment**  |   Assignment (`=`)
