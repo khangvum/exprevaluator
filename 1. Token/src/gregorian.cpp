@@ -12,6 +12,9 @@
   Revision History
   -------------------------------------------------------------
 
+  Version 2025.04.30
+	  Added Gregorian data type
+
   Version 2025.01.06
 	  Alpha release
 
