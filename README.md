@@ -17,23 +17,23 @@ Type            |   Operators
 
 -   Includes **_built-in functions_**:
 
-Type            |   Functions
-:---------------|:----------------------------------------------------------------
-**One-Argument**|   `abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `exp`, `floor`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`
-**Two-Argument**|   `arctan2`, `max`, `min`, `pow`
+Type                |Functions
+:------------------:|:----------------------------------------------------------------
+**One-Argument**    |`abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `day`, `exp`, `floor`, `month`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`, `year`
+**Two-Argument**    |`arctan2`, `max`, `min`, `pow`
+**Three-Argument**  |`gregorian`
 
--   Handles **_multiple data types_**: Boolean, Integer, Real, and Variable.
+-   Handles **_multiple data types_**: Boolean, Integer, Real, Variable, and Gregorian.
 -   Supports **_nested expressions_** and **_parentheses_** for complex calculations.
 -   Simple, fast, and lightweight **_console-based_** interface.
 
 ## Shunting Yard Algorithm
 
-The Shunting Yard Algorithm is a method for parsing **_infix notation_** (Standard mathematical expressions) to **_postfix notation_**, also known as **_reverse Polish notation_** (**_RPN_**). Given the fact that computers cannot naturally handle **_parentheses_** and **_operator precedence_** the way human do, this conversion leverages **_postfix notation_** to simplify expression evaluation as it allows for **_stack-based_** evaluation, making expression parsing and calculation simpler and more efficient.
+The [Shunting Yard Algorithm](!docs/Parser.pdf) is a method for parsing **_infix notation_** (Standard mathematical expressions) to **_postfix notation_**, also known as **_reverse Polish notation_** (**_RPN_**). Given the fact that computers cannot naturally handle **_parentheses_** and **_operator precedence_** the way human do, this conversion leverages **_postfix notation_** to simplify expression evaluation as it allows for **_stack-based_** evaluation, making expression parsing and calculation simpler and more efficient.
 
 -   Postfix notation is a mathematical notation in which **_operators follow their operands_**.
 -   The notation does not need any **_parentheses_** for as long as each operator has a **_fixed number of operands_**.
 -   This program implements the algorithm to allow users to input mathematical expressions in a **_familiar format_** (infix) while internally converting them to an **_efficiently computable format_** (postfix).
--   Algorithm: [Shunting Yard Algorithm](!docs/Parser.pdf)
 -   Example:
 
 Infix notation  |   Postfix Notation (Reverse Polish Notation)
@@ -44,9 +44,9 @@ Infix notation  |   Postfix Notation (Reverse Polish Notation)
 11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
 5 ** 2 ** 3     |   5 2 3 ** **
 
-## Boost.Multiprecision for Arbitrary Precision and Large Numbers
+## `Boost.Multiprecision` for Arbitrary Precision and Large Numbers
 
-For **_high precision_** and **_handling large numbers_** beyond those of C++ standard built-in types like `std::int64_t` or `double`, the program utilizes **_Boost.Multiprecision_** library:
+For **_high precision_** and **_handling large numbers_** beyond those of C++ standard built-in types like `std::int64_t` or `double`, the program utilizes `Boost.Multiprecision` library:
 
 -   `boost::multiprecision::cpp_int`:
     -   An **_arbitrary-precision_** integer type, constrained only by **_available memory_**.

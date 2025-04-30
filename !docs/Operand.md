@@ -17,10 +17,16 @@ classDiagram
 
     class E
 
+    class Gregorian
+
+    class Now
+
     Operand <|-- Boolean
     Operand <|-- Integer
     Operand <|-- Real
     Operand <|-- Variable
+    Operand <|-- Gregorian
     Real <|-- Pi
     Real <|-- E
+    Gregorian <|-- Now
 ```
