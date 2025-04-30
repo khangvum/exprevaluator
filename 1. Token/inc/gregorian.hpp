@@ -5,22 +5,25 @@
 	\date	    2025-04-02
 	\copyright	Khang Vu
 
-  =====
+  =============================================================
   Declarations of the Gregorian classes derived from Operand 
   class
 
-  =====
+  =============================================================
   Revision History
   -------------------------------------------------------------
 
   Version 2025.01.06
 	  Alpha release
 
-  =====
+  Version 2025.04.30
+	  Added Gregorian data type
+
+  =============================================================
 
   Copyright Khang Vu
 
-  ===== */
+  ============================================================= */
 
 
 #include "operand.hpp"
@@ -35,10 +38,9 @@ namespace exprevaluator {
 					hour_t		- The hour of the day
 					minute_t	- The minute of the hour
 					second_t	- The second of the minute
-		\return		jd_t	- The Julian date
+		\return		jd_t		- The Julian date
 	*/
-	jd_t gregorian_to_jd(year_t year, month_t month, day_t day);
-	jd_t gregorian_to_jd(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t second);
+	jd_t gregorian_to_jd(year_t year, month_t month, day_t day,hour_t hour = hour_t(0), minute_t minute = minute_t(0), second_t second = second_t(0.0));
 
 	/*	\brief		Convert to Gregorian from Julian date
 		\param		jd_t		- The Julian date
@@ -49,7 +51,6 @@ namespace exprevaluator {
 					minute_t&	- The minute of the hour
 					second_t&	- The second of the minute
 	*/
-	void jd_to_gregorian(jd_t jd, year_t& year, month_t& month, day_t& day);
 	void jd_to_gregorian(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second);
 
 	// Gregorian class
@@ -58,8 +59,6 @@ namespace exprevaluator {
 		using value_type = jd_t;
 		DEF_POINTER_TYPE(Gregorian)
 	private:
-		value_type  value_{ 0.0 };
-
 		// Gregorian values
 		year_t		year_{ -4713 };
 		month_t		month_{ November };
@@ -92,7 +91,7 @@ namespace exprevaluator {
 		void from_jd(value_type jd) { jd_to_gregorian(jd, year_, month_, day_, hour_, minute_, second_); }
 	public:
 		Gregorian();
-		constexpr Gregorian(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t second)
+		Gregorian(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t second)
 			: year_{ year }, month_{ month }, day_{ day }, hour_{ hour }, minute_{ minute }, second_{ second } {}
 		Gregorian(const Jd& jd);
 
@@ -104,8 +103,37 @@ namespace exprevaluator {
 		constexpr minute_t minute() const { return minute_; }
 		constexpr second_t second() const { return second_; }
 
-		[[nodiscard]] value_type	value() const { return value_; }
+		// Implicit cast to Julian day
+		operator Jd () const { return Jd(to_jd()); }
+		
+		// Assign and convert from Julian day to Gregorian
+		Gregorian& operator = (const Jd& jd) {
+			from_jd(jd.jd());
+			return *this;
+		}
+
+		// Block some operators
+		Gregorian operator + (const detail::packaged_year_real&) = delete;
+		Gregorian operator - (const detail::packaged_year_real&) = delete;
+		Gregorian operator + (const detail::packaged_month_real&) = delete;
+		Gregorian operator - (const detail::packaged_month_real&) = delete;
+
+		[[nodiscard]] value_type	value() const { return to_jd(); }
 		[[nodiscard]] string_type	str() const override;
+
+
+		// 2. Binary operators
+		// - Arithmetic
+		OVERRIDE_OPERATION(perform_addition)
+		OVERRIDE_OPERATION(perform_subtraction)
+
+		// - Relational
+		OVERRIDE_OPERATION(perform_equality)
+		OVERRIDE_OPERATION(perform_greater)
+		OVERRIDE_OPERATION(perform_greater_equal)
+		OVERRIDE_OPERATION(perform_inequality)
+		OVERRIDE_OPERATION(perform_less)
+		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
 	// Gregorian Now class
@@ -135,6 +163,7 @@ namespace exprevaluator {
 	// Julian date of the start of the Gregorian epoch
 	constexpr jd_t GREGORIAN_EPOCH{ 1'721'425.5 };
 
+	// Functions
 	/*	\brief		Check if the year is a Gregorian leap year
 		\param		year_t	- The Gregorian year
 		\return		bool	- Whether the year is a leap year
@@ -167,4 +196,18 @@ namespace exprevaluator {
 	constexpr char const* gregorian_short_month_name(month_t month) {
 		return civil::month_name_short(month);
 	}
+
+	// Month addition/subtraction
+	// Gregorian + (integer month)
+	Gregorian operator + (const Gregorian& date, const detail::packaged_month_integer& month);
+
+	// Gregorian - (integer month)
+	inline Gregorian operator - (const Gregorian& date, const detail::packaged_month_integer& month) { return date + detail::packaged_month_integer(-month.months_); }
+
+	// Year addition/subtraction
+	// Gregorian + (integer year)
+	Gregorian operator + (const Gregorian& date, const detail::packaged_year_integer& year);
+
+	// Gregorian - (integer year)
+	inline Gregorian operator - (const Gregorian& date, const detail::packaged_year_integer& year) { return date + detail::packaged_year_integer(-year.years_); }
 }	// End of namespace exprevaluator

@@ -12,6 +12,9 @@
   Version 2025.01.06
 	  Alpha release
 
+  Version 2025.04.30
+	  Added Gregorian data type
+
   =============================================================
 
   Copyright Khang Vu

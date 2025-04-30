@@ -17,8 +17,10 @@
 			class Arctan
 			class Ceil
 			class Cos
+			class DayFunc
 			class Exp
 			class Floor
+			class MonthFunc
 			class Lb
 			class Ln
 			class Log
@@ -26,12 +28,14 @@
 			class Sin
 			class Sqrt
 			class Tan
+			class YearFunc
 		class TwoArgFunction
 			class Arctan2
 			class Max
 			class Min
 			class Pow
 		class ThreeArgFunction
+			class GregorianFunc
 
   =============================================================
   Revision History
@@ -39,6 +43,9 @@
 
   Version 2025.01.06
 	  Alpha release
+
+  Version 2025.04.30
+	  Added Gregorian data type
 
   =============================================================
 
@@ -49,6 +56,7 @@
 #include "operation.hpp"
 #include "integer.hpp"
 #include "gregorian.hpp"
+#include "ymd.hpp"
 #include <stdexcept>
 
 namespace exprevaluator {
@@ -116,6 +124,16 @@ namespace exprevaluator {
 						}
 					};
 
+					// DayFunc class
+					class DayFunc : public OneArgFunction {
+					public:
+						DEFINE_PURE_OPERATION(perform) {
+							normalize(operand_stack);
+							auto day_ptr{ operand_stack.top() }; operand_stack.pop();
+							return convert<Operand>(make<Day>(static_cast<day_t>(value_of<Integer>(day_ptr))));
+						}
+					};
+
 					// Exp (Exponential) class
 					class Exp : public OneArgFunction {
 					public:
@@ -131,6 +149,16 @@ namespace exprevaluator {
 						DEFINE_PURE_OPERATION(perform) {
 							normalize(operand_stack);
 							return operand_stack.top()->perform_floor(operand_stack);
+						}
+					};
+
+					// MonthFunc class
+					class MonthFunc : public OneArgFunction {
+					public:
+						DEFINE_PURE_OPERATION(perform) {
+							normalize(operand_stack);
+							auto month_ptr{ operand_stack.top() }; operand_stack.pop();
+							return convert<Operand>(make<Month>(static_cast<month_t>(value_of<Integer>(month_ptr))));
 						}
 					};
 
@@ -208,6 +236,16 @@ namespace exprevaluator {
 						}
 					};
 
+					// YearFunc class
+					class YearFunc : public OneArgFunction {
+					public:
+						DEFINE_PURE_OPERATION(perform) {
+							normalize(operand_stack);
+							auto year_ptr{ operand_stack.top() }; operand_stack.pop();
+							return convert<Operand>(make<Year>(static_cast<year_t>(value_of<Integer>(year_ptr))));
+						}
+					};
+
 			// TwoArgFunction base class
 			class TwoArgFunction : public Function {
 			public:
@@ -265,11 +303,18 @@ namespace exprevaluator {
 				public:
 					DEFINE_PURE_OPERATION(perform) {
 						normalize(operand_stack);
-						auto day{ value_of<Integer>(operand_stack.top()) }; operand_stack.pop();
-						auto month{ value_of<Integer>(operand_stack.top()) }; operand_stack.pop();
-						auto year{ value_of<Integer>(operand_stack.top()) }; operand_stack.pop();
+						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
 
-						return convert<Operand>(make<Gregorian>());
+						if (month < 1 || month > 12)
+							throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+						day_t days_in_month{ civil::days_in_month(month, is_gregorian_leapyear(year)) };
+						if (day < 1 || day > days_in_month)
+                            throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+						return convert<Operand>(make<Gregorian>(gregorian_to_jd(year, month, day)));
 					}
 				};
 }	// End of namespace exprevaluator

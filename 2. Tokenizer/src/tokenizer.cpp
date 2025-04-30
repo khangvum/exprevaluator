@@ -4,22 +4,26 @@
 	\date	    2025-01-06
 	\copyright	Khang Vu
 
-  =====
+  =============================================================
   Revision History
   -------------------------------------------------------------
 
   Version 2025.01.06
 	  Alpha release
 
-  =====
+  Version 2025.04.30
+	  Added Gregorian data type
+
+  =============================================================
 
   Copyright Khang Vu
 
-  ===== */
+  ============================================================= */
 
 #include "../inc/tokenizer.hpp"
 #include "../../1. Token/inc/boolean.hpp"
 #include "../../1. Token/inc/real.hpp"
+#include "../../1. Token/inc/ymd.hpp"
 #include "../../1. Token/inc/function.hpp"
 #include "../../1. Token/inc/operator.hpp"
 #include "../../1. Token/inc/pseudo_operation.hpp"
@@ -38,6 +42,8 @@ namespace exprevaluator {
 		keywords_["arctan2"]	= keywords_["Arctan2"]		= keywords_["ARCTAN2"]		= make<Arctan2>();
 		keywords_["ceil"]		= keywords_["Ceil"]			= keywords_["CEIL"]			= make<Ceil>();
 		keywords_["cos"]		= keywords_["Cos"]			= keywords_["COS"]			= make<Cos>();
+		keywords_["day"]		= keywords_["Day"]			= keywords_["DAY"]			=
+		keywords_["days"]		= keywords_["Days"]			= keywords_["DAYS"]			= make<DayFunc>();
 		keywords_["e"]			= keywords_["E"]										= make<E>();
 		keywords_["exp"]		= keywords_["Exp"]			= keywords_["EXP"]			= make<Exp>();
 		keywords_["false"]		= keywords_["False"]		= keywords_["FALSE"]		= make<False>();
@@ -49,6 +55,8 @@ namespace exprevaluator {
 		keywords_["max"]		= keywords_["Max"]			= keywords_["MAX"]			= make<Max>();
 		keywords_["min"]		= keywords_["Min"]			= keywords_["MIN"]			= make<Min>();
 		keywords_["mod"]		= keywords_["Mod"]			= keywords_["MOD"]			= make<Modulus>();
+		keywords_["month"]		= keywords_["Month"]		= keywords_["MONTH"]		=
+		keywords_["months"]		= keywords_["Months"]		= keywords_["MONTHS"]		= make<MonthFunc>();
 		keywords_["nand"]		= keywords_["Nand"]			= keywords_["NAND"]			= make<Nand>();
 		keywords_["nor"]		= keywords_["Nor"]			= keywords_["NOR"]			= make<Nor>();
 		keywords_["not"]		= keywords_["Not"]			= keywords_["NOT"]			= make<Not>();
@@ -63,6 +71,8 @@ namespace exprevaluator {
 		keywords_["true"]		= keywords_["True"]			= keywords_["TRUE"]			= make<True>();
 		keywords_["xnor"]		= keywords_["Xnor"]			= keywords_["XNOR"]			= make<Xnor>();
 		keywords_["xor"]		= keywords_["Xor"]			= keywords_["XOR"]			= make<Xor>();
+		keywords_["year"]		= keywords_["Year"]			= keywords_["YEAR"]			=
+		keywords_["years"]		= keywords_["Years"]		= keywords_["YEARS"]		= make<YearFunc>();
 	}
 
 	// Get an identifier from the expression string

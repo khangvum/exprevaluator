@@ -11,6 +11,9 @@
   Version 2025.01.06
       Alpha release
 
+  Version 2025.04.30
+      Added Gregorian data type
+
   =============================================================
 
   Copyright Khang Vu
@@ -29,7 +32,6 @@ int main()
     ExpressionEvaluator expression_evaluator;
     for (size_t count{ 0 }; ; ) {
         set_color(WHITE);       cout << " > ";
-        set_color(RED);
         string command;
         if (!getline(cin, command) || command.empty())
             break;

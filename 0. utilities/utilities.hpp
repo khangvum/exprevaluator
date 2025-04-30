@@ -9,18 +9,11 @@
   Revision History
   -------------------------------------------------------------
 
-  Version 2024.12.03
-	  Directory hierarchy cleanup
-	  Separated system, constants, and helper utilities
-
-  Version 2024.11.05
-	  Classes cleanup
-
-  Version 2024.06.18
-	  Added ThreadPool
-
-  Version 2024.04.19
+  Version 2025.01.06
 	  Alpha release
+
+  Version 2025.04.30
+	  Added Gregorian data type
 
   =============================================================
 

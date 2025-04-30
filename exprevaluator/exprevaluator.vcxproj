@@ -28,6 +28,7 @@
     <ClCompile Include="..\1. Token\src\boolean.cpp" />
     <ClCompile Include="..\1. Token\src\function.cpp" />
     <ClCompile Include="..\1. Token\src\gregorian.cpp" />
+    <ClCompile Include="..\1. Token\src\ymd.cpp" />
     <ClCompile Include="..\1. Token\src\integer.cpp" />
     <ClCompile Include="..\1. Token\src\operand.cpp" />
     <ClCompile Include="..\1. Token\src\operation.cpp" />
@@ -46,13 +47,14 @@
     <ClInclude Include="..\0. utilities\inc\calendar.hpp" />
     <ClInclude Include="..\0. utilities\inc\constants.hpp" />
     <ClInclude Include="..\0. utilities\inc\helper.hpp" />
-    <ClInclude Include="..\0. utilities\inc\julian_date.hpp" />
+    <ClInclude Include="..\0. utilities\inc\julian_day.hpp" />
     <ClInclude Include="..\0. utilities\inc\system.hpp" />
     <ClInclude Include="..\0. utilities\inc\time_of_day.hpp" />
     <ClInclude Include="..\0. utilities\utilities.hpp" />
     <ClInclude Include="..\1. Token\inc\boolean.hpp" />
     <ClInclude Include="..\1. Token\inc\function.hpp" />
     <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
+    <ClInclude Include="..\1. Token\inc\ymd.hpp" />
     <ClInclude Include="..\1. Token\inc\integer.hpp" />
     <ClInclude Include="..\1. Token\inc\operand.hpp" />
     <ClInclude Include="..\1. Token\inc\operation.hpp" />

@@ -5,7 +5,8 @@
 	\copyright	Khang Vu
 
   =============================================================
-	Definition of the Gregorian classes derived from Operand class
+	Definition of the Gregorian classes derived from Operand 
+	class
 
   =============================================================
   Revision History
@@ -21,6 +22,9 @@
   ============================================================= */
 
 #include "../inc/gregorian.hpp"
+#include "../inc/boolean.hpp"
+#include "../inc/integer.hpp"
+#include "../inc/ymd.hpp"
 #include <sstream>
 #include <iomanip>
 using namespace std;
@@ -86,5 +90,73 @@ namespace exprevaluator {
 		}
 
 		return Gregorian(years, months, days, date.hour(), date.minute(), date.second());
+	}
+
+	// 2. Binary operators
+	// - Arithmetic
+	DEFINE_OPERATION(Gregorian, perform_addition) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+
+		auto gregorian_date{ Gregorian(value_of<Gregorian>(rhs)) };
+
+		if (is<Gregorian>(lhs))
+			throw runtime_error("Operation cannot be performed on a Gregorian operand");
+		else if (is<Year>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date + value_of<Year>(lhs)).value()));
+		else if (is<Month>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date + value_of<Month>(lhs)).value()));
+		else if (is<Day>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date + value_of<Day>(lhs))));
+		else
+			return convert<Operand>(make<Gregorian>((gregorian_date + detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_subtraction) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+
+		auto gregorian_date{ Gregorian(value_of<Gregorian>(rhs)) };
+		if (is<Gregorian>(lhs))
+			return convert<Operand>(make<Day>(static_cast<day_t>((Gregorian(value_of<Gregorian>(lhs)).value())) - gregorian_date.value()));
+		if (is<Year>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date - value_of<Year>(lhs)).value()));
+		else if (is<Month>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date - value_of<Month>(lhs)).value()));
+		else if (is<Day>(lhs))
+			return convert<Operand>(make<Gregorian>((gregorian_date - value_of<Day>(lhs))));
+		else
+			return convert<Operand>(make<Gregorian>((gregorian_date - detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
+	}
+
+	// - Relational
+	DEFINE_OPERATION(Gregorian, perform_equality) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) == Gregorian(value_of<Gregorian>(rhs))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_greater) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) > Gregorian(value_of<Gregorian>(rhs))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_greater_equal) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) >= Gregorian(value_of<Gregorian>(rhs))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_inequality) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) != Gregorian(value_of<Gregorian>(rhs))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_less) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) < Gregorian(value_of<Gregorian>(rhs))));
+	}
+	DEFINE_OPERATION(Gregorian, perform_less_equal) {
+		auto rhs{ operand_stack.top() }; operand_stack.pop();
+		auto lhs{ operand_stack.top() }; operand_stack.pop();
+		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) <= Gregorian(value_of<Gregorian>(rhs))));
 	}
 }	// End of namespace exprevaluator

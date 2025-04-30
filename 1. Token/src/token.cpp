@@ -23,6 +23,6 @@ using namespace std;
 
 namespace exprevaluator {
 	[[nodiscard]] Token::string_type Token::str() const {
-		return string_type("<") + string_type(typeid(*this).name()).substr(6) + string_type(">");
+		return string_type("<") + string_type(typeid(*this).name()).substr(21) + string_type(">");
 	}
 }	// End of namespace exprevaluator

@@ -12,6 +12,9 @@
   Version 2025.01.06
 	  Alpha release
 
+  Version 2025.04.30
+	  Added Gregorian data type
+
   =============================================================
 
   Copyright Khang Vu
@@ -38,9 +41,6 @@ namespace exprevaluator {
 
 	// - Julian date
 	using jd_t = double;
-
-	// The 'now' type used by default constructors
-	enum class now_t { NOTIMEOFDAY = 0, WTIMEOFDAY };
 
 	// Constants
 	constexpr double EARTH_ORBITAL_PERIOD_DAYS = 365.256'363'004;
