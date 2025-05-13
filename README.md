@@ -1,4 +1,4 @@
-# exprevaluator
+# Expression Evaluator
 
 A Windows console application that **_evaluates mathematical expressions_** involving **_multiple operators_** and **_functions_**. It supports operations on **_a variety of data types_**, including Boolean, Integer, Real, and Variable.
 
