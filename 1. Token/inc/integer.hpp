@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    integer.hpp
 	\brief	    Integer class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declaration of the Integer classes derived from Operand class
@@ -20,7 +20,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

@@ -1,8 +1,8 @@
 /*! \file	    operand.cpp
 	\brief	    Operand class definition and utilities
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Definition of the Operand classes derived from Token class
@@ -19,7 +19,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

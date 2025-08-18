@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    operation.hpp
 	\brief	    Operation class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declaration of the Operation classes derived from Token
@@ -21,7 +21,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

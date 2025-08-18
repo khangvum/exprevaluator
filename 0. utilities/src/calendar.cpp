@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    calendar.cpp
 	\brief	    Calendar utilities and type aliases
-    \author	    Khang Vu
+    \author	    Manh Khang Vu
     \date	    2025-04-02
-    \copyright	Khang Vu
+    \copyright	Manh Khang Vu
 
   =============================================================
   Revision History
@@ -17,7 +17,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    pseudo_operation.hpp
 	\brief	    PseudoOperation class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the PseudoOperation classes derived from 
@@ -27,7 +27,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

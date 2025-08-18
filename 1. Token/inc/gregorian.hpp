@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    gregorian.hpp
 	\brief	    Gregorian class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-02
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the Gregorian classes derived from Operand 
@@ -21,7 +21,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

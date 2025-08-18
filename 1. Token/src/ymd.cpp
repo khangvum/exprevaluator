@@ -1,8 +1,8 @@
 /*! \file	    ymd.cpp
 	\brief	    Year, Month, and Day class definitions
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-28
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Definitions of the Year, Month, and Day classes derived from
@@ -20,7 +20,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    boolean.hpp
 	\brief	    Boolean class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the Boolean classes derived from Operand 
@@ -25,7 +25,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    ymd.hpp
 	\brief	    Year, Month, and Day class declarations
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-28
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the Year, Month, and Day classes derived from 
@@ -21,7 +21,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

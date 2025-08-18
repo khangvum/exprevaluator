@@ -1,8 +1,8 @@
 /*! \file	    expression_evaluator.cpp
 	\brief	    ExpressionEvaluator class definition
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Revision History
@@ -16,7 +16,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

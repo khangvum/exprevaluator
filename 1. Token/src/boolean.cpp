@@ -1,8 +1,8 @@
 /*! \file	    boolean.cpp
 	\brief	    Boolean class definitions
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Definitions of the Boolean classes derived from Operand class
@@ -19,7 +19,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

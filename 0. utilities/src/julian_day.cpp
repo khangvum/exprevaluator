@@ -1,8 +1,8 @@
 /*! \file	    julian_day.cpp
 	\brief	    Julian Day class definition
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-05
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the Julian Day class
@@ -19,7 +19,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

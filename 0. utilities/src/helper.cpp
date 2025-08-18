@@ -1,8 +1,8 @@
 /*! \file	    helper.cpp
 	\brief	    Helper utilities
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Revision History
@@ -16,7 +16,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 
@@ -38,7 +38,7 @@ namespace exprevaluator {
 		atexit(restore_codepage);
 
 		set_color(INVERSE_GREY);
-		cout << " Expression Evaluator 1.1.0 "s << copyright << "2025, Khang Vu "s;
+		cout << " Expression Evaluator 1.1.0 "s << copyright << "2025, Manh Khang Vu "s;
 		set_color(WHITE); cout << "\n\n";
 	}
 }	// End of namespace exprevaluator

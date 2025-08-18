@@ -1,8 +1,8 @@
 /*! \file	    gregorian.cpp
 	\brief	    Gregorian class definition
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-05
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
 	Definition of the Gregorian classes derived from Operand 
@@ -20,7 +20,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

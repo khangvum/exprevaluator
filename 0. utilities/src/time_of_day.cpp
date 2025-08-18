@@ -1,8 +1,8 @@
 /*! \file	    time_of_day.cpp
 	\brief	    Time of day utilities
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-05
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Revision History
@@ -16,7 +16,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

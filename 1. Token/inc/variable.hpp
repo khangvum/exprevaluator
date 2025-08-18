@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    variable.hpp
 	\brief	    Variable class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-01-06
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declaration of the Variable classes derived from Operand 
@@ -21,7 +21,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 

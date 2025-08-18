@@ -1,9 +1,9 @@
 #pragma once
 /*! \file	    julian_day.hpp
 	\brief	    Julian Day class declaration
-	\author	    Khang Vu
+	\author	    Manh Khang Vu
 	\date	    2025-04-02
-	\copyright	Khang Vu
+	\copyright	Manh Khang Vu
 
   =============================================================
   Declarations of the Julian Day class
@@ -20,7 +20,7 @@
 
   =============================================================
 
-  Copyright Khang Vu
+  Copyright Manh Khang Vu
 
   ============================================================= */
 
