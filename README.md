@@ -6,22 +6,22 @@ A Windows console application that **_evaluates mathematical expressions_** invo
 
 -   Supports **_various operators_**:
 
-Type            |   Operators
-:--------------:|:----------------------------------------------------------------
-**Unary**       |   Negation (`-x`), Not (`!x`), Factorial (`x!`)
-**Arithmetic**  |   Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`), Modulus (`%`), Power (`**`)
-**Assignment**  |   Assignment (`=`)
-**Logical**     |   And (`&&`), Nand (`!&&`), Or (`\|\|`), Nor (`!\|\|`)
-**Relational**  |   Equality (`==`), Inequality (`!=`), Greater (`>`), GreaterEqual (`>=`), Less (`<`), LessEqual (`<=`)
-**Bitwise**     |   Xor (`^`), Xnor (`!^`)
+    Type            |   Operators
+    :--------------:|:----------------------------------------------------------------
+    **Unary**       |   Negation (`-x`), Not (`!x`), Factorial (`x!`)
+    **Arithmetic**  |   Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`), Modulus (`%`), Power (`**`)
+    **Assignment**  |   Assignment (`=`)
+    **Logical**     |   And (`&&`), Nand (`!&&`), Or (`\|\|`), Nor (`!\|\|`)
+    **Relational**  |   Equality (`==`), Inequality (`!=`), Greater (`>`), GreaterEqual (`>=`), Less (`<`), LessEqual (`<=`)
+    **Bitwise**     |   Xor (`^`), Xnor (`!^`)
 
 -   Includes **_built-in functions_**:
 
-Type                |Functions
-:------------------:|:----------------------------------------------------------------
-**One-Argument**    |`abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `day`, `exp`, `floor`, `month`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`, `year`
-**Two-Argument**    |`arctan2`, `max`, `min`, `pow`
-**Three-Argument**  |`gregorian`
+    Type                |Functions
+    :------------------:|:----------------------------------------------------------------
+    **One-Argument**    |`abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `day`, `exp`, `floor`, `month`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`, `year`
+    **Two-Argument**    |`arctan2`, `max`, `min`, `pow`
+    **Three-Argument**  |`gregorian`
 
 -   Handles **_multiple data types_**: Boolean, Integer, Real, Variable, and Gregorian.
 -   Supports **_nested expressions_** and **_parentheses_** for complex calculations.
@@ -36,13 +36,13 @@ The [Shunting Yard Algorithm](!docs/Parser.pdf) is a method for parsing **_infix
 -   This program implements the algorithm to allow users to input mathematical expressions in a **_familiar format_** (infix) while internally converting them to an **_efficiently computable format_** (postfix).
 -   Example:
 
-Infix notation  |   Postfix Notation (Reverse Polish Notation)
-:--------------:|:-----------------------------------------------------------:
-3 + 4           |   3 4 +
-3 x 6 + 4       |   3 6 x 4 +
-(5 - 6) x 7     |   5 6 - 7 x
-11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
-5 ** 2 ** 3     |   5 2 3 ** **
+    Infix notation  |   Postfix Notation (Reverse Polish Notation)
+    :--------------:|:-----------------------------------------------------------:
+    3 + 4           |   3 4 +
+    3 x 6 + 4       |   3 6 x 4 +
+    (5 - 6) x 7     |   5 6 - 7 x
+    11 x 7 + 6 ÷ 3  |   11 7 x 6 3 ÷ +
+    5 ** 2 ** 3     |   5 2 3 ** **
 
 ## `Boost.Multiprecision` for Arbitrary Precision and Large Numbers
 
@@ -52,19 +52,19 @@ For **_high precision_** and **_handling large numbers_** beyond those of C++ st
     -   An **_arbitrary-precision_** integer type, constrained only by **_available memory_**.
     -   Comparison:
 
-Type            |   Range
-:--------------:|:-----------------------------------------------------------
-`std::int64_t`  |   -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (-2<sup>63</sup> to 2<sup>63</sup> - 1)
-`cpp_int`       |   Effectively unlimited, constrained only by available memory
+        Type            |   Range
+        :--------------:|:-----------------------------------------------------------
+        `std::int64_t`  |   -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (-2<sup>63</sup> to 2<sup>63</sup> - 1)
+        `cpp_int`       |   Effectively unlimited, constrained only by available memory
 
 -   `boost::multiprecision::number<boost::multiprecision::cpp_dec_float<1000, int32_t, void>>`:
     -   **_High-precision_** floating-point arithmetic, providing up to **_1000 decimal places_** of precision.
     -   Comparison:
 
-Type                    |   Maximum Precision   |   Range
-:----------------------:|:---------------------:|:-------------------------------
-`double`                |   15-17               |   ±1.8 × 10<sup>308</sup>
-`cpp_dec_float<1000>`   |   1000                |   Effectively unlimited, constrained only by available memory
+        Type                    |   Maximum Precision   |   Range
+        :----------------------:|:---------------------:|:-------------------------------
+        `double`                |   15-17               |   ±1.8 × 10<sup>308</sup>
+        `cpp_dec_float<1000>`   |   1000                |   Effectively unlimited, constrained only by available memory
 
 ## Architecture
 
