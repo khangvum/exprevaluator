@@ -5,8 +5,8 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-	Definition of the Gregorian classes derived from Operand 
-	class
+  Definition of the Gregorian classes derived from Calendar
+  class
 
   =============================================================
   Revision History
@@ -103,7 +103,7 @@ namespace exprevaluator {
 
 		auto gregorian_date{ Gregorian(value_of<Gregorian>(rhs)) };
 
-		if (is<Gregorian>(lhs))
+		if (is<Calendar>(lhs))
 			throw runtime_error("Operation cannot be performed on a Gregorian operand");
 		else if (is<Year>(lhs))
 			return convert<Operand>(make<Gregorian>((gregorian_date + value_of<Year>(lhs)).value()));
@@ -119,8 +119,9 @@ namespace exprevaluator {
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
 
 		auto gregorian_date{ Gregorian(value_of<Gregorian>(rhs)) };
-		if (is<Gregorian>(lhs))
-			return convert<Operand>(make<Day>(static_cast<day_t>((Gregorian(value_of<Gregorian>(lhs)).value())) - gregorian_date.value()));
+
+		if (is<Calendar>(lhs))
+			return convert<Operand>(make<Day>(static_cast<day_t>(value_of<Calendar>(lhs) - gregorian_date)));
 		if (is<Year>(lhs))
 			return convert<Operand>(make<Gregorian>((gregorian_date - value_of<Year>(lhs)).value()));
 		else if (is<Month>(lhs))
@@ -135,31 +136,31 @@ namespace exprevaluator {
 	DEFINE_OPERATION(Gregorian, perform_equality) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) == Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) == value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Gregorian, perform_greater) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) > Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) > value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Gregorian, perform_greater_equal) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) >= Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) >= value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Gregorian, perform_inequality) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) != Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) != value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Gregorian, perform_less) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) < Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) < value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Gregorian, perform_less_equal) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Gregorian(value_of<Gregorian>(lhs)) <= Gregorian(value_of<Gregorian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) <= value_of<Calendar>(rhs)));
 	}
 }	// End of namespace exprevaluator

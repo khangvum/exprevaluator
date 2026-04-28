@@ -6,7 +6,7 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-  Declarations of the Gregorian classes derived from Operand 
+  Declarations of the Gregorian classes derived from Calendar 
   class
 
   =============================================================
@@ -27,11 +27,12 @@
 
 
 #include "operand.hpp"
+#include "calendar.hpp"
 #include "../../0. utilities/utilities.hpp"
 
 namespace exprevaluator {
 	// Operations
-	/*	\brief		Convert to Julian date from Gregorian
+	/*	\brief		Convert to Julian day from Gregorian
 		\param		year_t		- The Gregorian year
 					month_t		- The Gregorian month
 					day_t		- The Gregorian day
@@ -42,8 +43,8 @@ namespace exprevaluator {
 	*/
 	jd_t gregorian_to_jd(year_t year, month_t month, day_t day,hour_t hour = hour_t(0), minute_t minute = minute_t(0), second_t second = second_t(0.0));
 
-	/*	\brief		Convert to Gregorian from Julian date
-		\param		jd_t		- The Julian date
+	/*	\brief		Convert to Gregorian from Julian day
+		\param		jd_t		- The Julian day
 					year_t&		- The Gregorian year
 					month_t&	- The Gregorian month
 					day_t&		- The Gregorian day
@@ -54,7 +55,7 @@ namespace exprevaluator {
 	void jd_to_gregorian(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second);
 
 	// Gregorian class
-	class Gregorian : public Operand {
+	class Gregorian : public Calendar {
 	public:
 		using value_type = jd_t;
 		DEF_POINTER_TYPE(Gregorian)
@@ -68,7 +69,7 @@ namespace exprevaluator {
 		second_t	second_{ 0.0 };
 
 		// Operations
-		/*	\brief		Convert to Julian date from Gregorian
+		/*	\brief		Convert to Julian day from Gregorian
 			\param		year_t		- The Gregorian year
 						month_t		- The Gregorian month
 						day_t		- The Gregorian day
@@ -79,8 +80,8 @@ namespace exprevaluator {
 		*/
 		value_type to_jd() const { return gregorian_to_jd(year_, month_, day_, hour_, minute_, second_); }
 
-		/*	\brief		Convert to Gregorian from Julian date
-			\param		jd_t		- The Julian date
+		/*	\brief		Convert to Gregorian from Julian day
+			\param		jd_t		- The Julian day
 						year_t&		- The Gregorian year
 						month_t&	- The Gregorian month
 						day_t&		- The Gregorian day
@@ -142,25 +143,8 @@ namespace exprevaluator {
 		Now() : Gregorian() {}
 	};
 
-	// User-defined literals
-	// - Convert a Gregorian year AD to an astronomical Gregorian year
-	constexpr year_t operator ""_AD(unsigned long long gregorian_year_AD) {
-		return static_cast<year_t>(gregorian_year_AD);
-	}
-	constexpr year_t operator ""_ad(unsigned long long gregorian_year_AD) {
-		return static_cast<year_t>(gregorian_year_AD);
-	}
-
-	// - Convert a Gregorian year BC to an astronomical Gregorian year
-	constexpr year_t operator ""_BC(unsigned long long gregorian_year_BC) {
-		return -static_cast<year_t>(gregorian_year_BC) + 1;
-	}
-	constexpr year_t operator ""_bc(unsigned long long gregorian_year_BC) {
-		return -static_cast<year_t>(gregorian_year_BC) + 1;
-	}
-
 	// Constants
-	// Julian date of the start of the Gregorian epoch
+	// Julian day of the start of the Gregorian epoch
 	constexpr jd_t GREGORIAN_EPOCH{ 1'721'425.5 };
 
 	// Functions
