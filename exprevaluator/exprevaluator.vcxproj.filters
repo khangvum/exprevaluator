@@ -141,6 +141,9 @@
     <ClCompile Include="..\1. Token\src\julian.cpp">
       <Filter>Source Files\1. Token\Operand</Filter>
     </ClCompile>
+    <ClCompile Include="..\1. Token\src\islamic.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\0. utilities\inc\calendar.hpp">
@@ -222,6 +225,9 @@
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
     <ClInclude Include="..\1. Token\inc\calendar.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\islamic.hpp">
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
   </ItemGroup>
