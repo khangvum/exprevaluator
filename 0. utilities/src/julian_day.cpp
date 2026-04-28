@@ -26,6 +26,7 @@
 #include "../inc/julian_day.hpp"
 #include "../inc/time_of_day.hpp"
 #include "../../1. Token/inc/gregorian.hpp"
+#include "../../1. Token/inc/julian.hpp"
 #include <time.h>
 using namespace std;
 
@@ -46,6 +47,7 @@ namespace exprevaluator {
 		);
 	}
 
+#pragma region Gregorian
 	// Julian day from Gregorian
 	namespace detail {
 		jd_t gregorian_to_jd(year_t year, month_t month, day_t day) {
@@ -78,4 +80,39 @@ namespace exprevaluator {
 		detail::jd_to_gregorian(jd, year, month, day);
 		hms(tod(jd), hour, minute, second);
 	}
+#pragma endregion
+
+#pragma region Julian
+	// Julian day from Julian
+	namespace detail {
+		jd_t julian_to_jd(year_t year, month_t month, day_t day) {
+			long long a{ (14 - month) / 12 };
+			long long y{ year + 4'800 - a };
+			long long m{ month + 12 * a - 3 };
+			return day + (153 * m + 2) / 5 + 365 * y + y / 4 - 32'083 - 0.5;
+		}
+	}
+	jd_t julian_to_jd(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t seconds) {
+		return detail::julian_to_jd(year, month, day) + tod(hour, minute, seconds);
+	}
+
+	// Julian from Julian day
+	namespace detail {
+		void jd_to_julian(jd_t jd, year_t& year, month_t& month, day_t& day) {
+			long long a{ static_cast<long long>(floor(jd + 0.5)) };
+			long long b{ a + 1'524 };
+			long long c{ static_cast<long long>(floor((b - 122.1) / 365.25)) };
+			long long d{ static_cast<long long>(floor(365.25 * c)) };
+			long long e{ static_cast<long long>(floor((b - d) / 30.6001)) };
+
+			month = static_cast<month_t>((e < 14) ? e - 1 : e - 13);
+			year = static_cast<year_t>((month > 2) ? c - 4'716 : c - 4'715);
+			day = static_cast<day_t>(b - d - static_cast<long long>(30.6001 * e));
+		}
+	}
+	void jd_to_julian(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
+		detail::jd_to_julian(jd, year, month, day);
+		hms(tod(jd), hour, minute, second);
+	}
+#pragma endregion
 }	// End of namespace exprevaluator
