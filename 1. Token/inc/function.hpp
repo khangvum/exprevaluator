@@ -36,6 +36,7 @@
 			class Pow
 		class ThreeArgFunction
 			class GregorianFunc
+			class JulianFunc
 
   =============================================================
   Revision History
@@ -56,6 +57,7 @@
 #include "operation.hpp"
 #include "integer.hpp"
 #include "gregorian.hpp"
+#include "julian.hpp"
 #include "ymd.hpp"
 #include <stdexcept>
 
@@ -315,6 +317,25 @@ namespace exprevaluator {
                             throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
 
 						return convert<Operand>(make<Gregorian>(gregorian_to_jd(year, month, day)));
+					}
+				};
+
+				// JulianFunc class
+				class JulianFunc : public ThreeArgFunction {
+				public:
+					DEFINE_PURE_OPERATION(perform) {
+						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+						if (month < 1 || month > 12)
+							throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+						day_t days_in_month{ civil::days_in_month(month, is_julian_leapyear(year)) };
+						if (day < 1 || day > days_in_month)
+                            throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+						return convert<Operand>(make<Julian>(julian_to_jd(year, month, day)));
 					}
 				};
 }	// End of namespace exprevaluator
