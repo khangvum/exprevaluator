@@ -122,7 +122,6 @@ namespace exprevaluator {
 		[[nodiscard]] value_type	value() const { return to_jd(); }
 		[[nodiscard]] string_type	str() const override;
 
-
 		// 2. Binary operators
 		// - Arithmetic
 		OVERRIDE_OPERATION(perform_addition)

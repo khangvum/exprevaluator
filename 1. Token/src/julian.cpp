@@ -108,35 +108,35 @@ namespace exprevaluator {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
 
-		auto gregorian_date{ Julian(value_of<Julian>(rhs)) };
+		auto julian_date{ Julian(value_of<Julian>(rhs)) };
 
 		if (is<Calendar>(lhs))
 			throw runtime_error("Operation cannot be performed on a Julian operand");
 		else if (is<Year>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date + value_of<Year>(lhs)).value()));
+			return convert<Operand>(make<Julian>((julian_date + value_of<Year>(lhs)).value()));
 		else if (is<Month>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date + value_of<Month>(lhs)).value()));
+			return convert<Operand>(make<Julian>((julian_date + value_of<Month>(lhs)).value()));
 		else if (is<Day>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date + value_of<Day>(lhs))));
+			return convert<Operand>(make<Julian>((julian_date + value_of<Day>(lhs))));
 		else
-			return convert<Operand>(make<Julian>((gregorian_date + detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
+			return convert<Operand>(make<Julian>((julian_date + detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
 	}
 	DEFINE_OPERATION(Julian, perform_subtraction) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
 
-		auto gregorian_date{ Julian(value_of<Julian>(rhs)) };
+		auto julian_date{ Julian(value_of<Julian>(rhs)) };
 
 		if (is<Calendar>(lhs))
-			return convert<Operand>(make<Day>(static_cast<day_t>(value_of<Calendar>(lhs) - gregorian_date)));
+			return convert<Operand>(make<Day>(static_cast<day_t>(value_of<Calendar>(lhs) - julian_date)));
 		if (is<Year>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date - value_of<Year>(lhs)).value()));
+			return convert<Operand>(make<Julian>((julian_date - value_of<Year>(lhs)).value()));
 		else if (is<Month>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date - value_of<Month>(lhs)).value()));
+			return convert<Operand>(make<Julian>((julian_date - value_of<Month>(lhs)).value()));
 		else if (is<Day>(lhs))
-			return convert<Operand>(make<Julian>((gregorian_date - value_of<Day>(lhs))));
+			return convert<Operand>(make<Julian>((julian_date - value_of<Day>(lhs))));
 		else
-			return convert<Operand>(make<Julian>((gregorian_date - detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
+			return convert<Operand>(make<Julian>((julian_date - detail::packaged_day(static_cast<day_t>(value_of<Integer>(lhs))))));
 	}
 
 	// - Relational
