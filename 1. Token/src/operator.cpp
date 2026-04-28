@@ -29,6 +29,7 @@
 #include "../inc/integer.hpp"
 #include "../inc/real.hpp"
 #include "../inc/gregorian.hpp"
+#include "../inc/julian.hpp"
 #include "../inc/variable.hpp"
 #include "../inc/ymd.hpp"
 #include <array>
@@ -40,9 +41,9 @@ namespace exprevaluator {
 	void BinaryOperator::normalize(OperandStack& operand_stack) const {
 		array<Operand::pointer_type, 2> operands;
 		bool	is_real{ false },
-                is_gregorian{ false };
+                is_calendar{ false };
 		unsigned	num_of_bools{ 0 },
-					num_of_gregorian{ 0 },
+					num_of_calendar{ 0 },
 					num_of_ymd{ 0 };
 		for (size_t i{ 0 }; i < operands.size(); ++i) {
 			const size_t index{ operands.size() - 1 - i };
@@ -61,29 +62,29 @@ namespace exprevaluator {
 				++num_of_bools;
 			else if (is<Real>(operands[index]))
 				is_real = true;
-			else if (is<Gregorian>(operands[index])) {
-				is_gregorian = true;
-				++num_of_gregorian;
+			else if (is<Calendar>(operands[index])) {
+				is_calendar = true;
+				++num_of_calendar;
 			}
 			else if (is<Year>(operands[index]) || is<Month>(operands[index]) || is<Day>(operands[index]))
 				++num_of_ymd;
 		}
 
-		if (num_of_bools == 1 || num_of_ymd == 2 || (!is_gregorian && num_of_ymd == 1))
+		if (num_of_bools == 1 || num_of_ymd == 2 || (!is_calendar && num_of_ymd == 1))
 			throw runtime_error("Cannot convert");
-		else if (is_gregorian && num_of_gregorian == 1) {
-			Operand::pointer_type gregorian, ymd;
+		else if (is_calendar && num_of_calendar == 1) {
+			Operand::pointer_type calendar, ymd;
 			for (size_t i{ 0 }; i < operands.size(); ++i) {
-				if (is<Gregorian>(operands[i]))
-					gregorian = move(operands[i]);
+				if (is<Calendar>(operands[i]))
+					calendar = move(operands[i]);
 				else if (is<Year>(operands[i]) || is<Month>(operands[i]) || is<Day>(operands[i]) || is<Integer>(operands[i]))
 					ymd = move(operands[i]);
 			}
 
 			if (!ymd)
-				throw runtime_error("Operation cannot be performed on a Gregorian operand");
+				throw runtime_error("Operation cannot be performed on a " + calendar->Token::str() + " operand");
 
-			operands = { ymd, gregorian };
+			operands = { ymd, calendar };
 		}
 		else if (is_real) {
 			for (size_t i{ 0 }; i < operands.size(); ++i) {
