@@ -53,6 +53,7 @@
     <ClInclude Include="..\0. utilities\inc\time_of_day.hpp" />
     <ClInclude Include="..\0. utilities\utilities.hpp" />
     <ClInclude Include="..\1. Token\inc\boolean.hpp" />
+    <ClInclude Include="..\1. Token\inc\calendar.hpp" />
     <ClInclude Include="..\1. Token\inc\function.hpp" />
     <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
     <ClInclude Include="..\1. Token\inc\julian.hpp" />

@@ -6,7 +6,8 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-  Declarations of the Julian classes derived from Operand class
+  Declarations of the Julian classes derived from Calendar
+  class
 
   =============================================================
   Revision History
@@ -26,6 +27,7 @@
 
 
 #include "operand.hpp"
+#include "calendar.hpp"
 #include "../../0. utilities/utilities.hpp"
 
 namespace exprevaluator {
@@ -134,23 +136,6 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less)
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
-
-	//// User-defined literals
-	//// - Convert a Julian year AD to an astronomical Julian year
-	//constexpr year_t operator ""_AD(unsigned long long julian_year_AD) {
-	//	return static_cast<year_t>(julian_year_AD);
-	//}
-	//constexpr year_t operator ""_ad(unsigned long long julian_year_AD) {
-	//	return static_cast<year_t>(julian_year_AD);
-	//}
-
-	//// - Convert a Julian year BC to an astronomical Julian year
-	//constexpr year_t operator ""_BC(unsigned long long julian_year_BC) {
-	//	return -static_cast<year_t>(julian_year_BC) + 1;
-	//}
-	//constexpr year_t operator ""_bc(unsigned long long julian_year_BC) {
-	//	return -static_cast<year_t>(julian_year_BC) + 1;
-	//}
 
 	// Constants
 	// Julian day of the start of the Julian epoch

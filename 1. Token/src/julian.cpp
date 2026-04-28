@@ -5,7 +5,8 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-	Definition of the Julian classes derived from Operand class
+	Definition of the Julian classes derived from Calendar
+	class
 
   =============================================================
   Revision History
@@ -125,8 +126,9 @@ namespace exprevaluator {
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
 
 		auto gregorian_date{ Julian(value_of<Julian>(rhs)) };
-		if (is<Julian>(lhs))
-			return convert<Operand>(make<Day>(static_cast<day_t>((Julian(value_of<Julian>(lhs)).value())) - gregorian_date.value()));
+
+		if (is<Calendar>(lhs))
+			return convert<Operand>(make<Day>(static_cast<day_t>(value_of<Calendar>(lhs) - gregorian_date)));
 		if (is<Year>(lhs))
 			return convert<Operand>(make<Julian>((gregorian_date - value_of<Year>(lhs)).value()));
 		else if (is<Month>(lhs))
@@ -141,31 +143,31 @@ namespace exprevaluator {
 	DEFINE_OPERATION(Julian, perform_equality) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) == Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) == value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Julian, perform_greater) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) > Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) > value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Julian, perform_greater_equal) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) >= Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) >= value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Julian, perform_inequality) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) != Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) != value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Julian, perform_less) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) < Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) < value_of<Calendar>(rhs)));
 	}
 	DEFINE_OPERATION(Julian, perform_less_equal) {
 		auto rhs{ operand_stack.top() }; operand_stack.pop();
 		auto lhs{ operand_stack.top() }; operand_stack.pop();
-		return convert<Operand>(make<Boolean>(Julian(value_of<Julian>(lhs)) <= Julian(value_of<Julian>(rhs))));
+		return convert<Operand>(make<Boolean>(value_of<Calendar>(lhs) <= value_of<Calendar>(rhs)));
 	}
 }	// End of namespace exprevaluator

@@ -221,6 +221,9 @@
     <ClInclude Include="..\1. Token\inc\julian.hpp">
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
+    <ClInclude Include="..\1. Token\inc\calendar.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="exprevaluator.rc">
