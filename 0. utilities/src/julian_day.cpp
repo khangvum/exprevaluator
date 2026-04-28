@@ -27,6 +27,7 @@
 #include "../inc/time_of_day.hpp"
 #include "../../1. Token/inc/gregorian.hpp"
 #include "../../1. Token/inc/julian.hpp"
+#include "../../1. Token/inc/islamic.hpp"
 #include <time.h>
 using namespace std;
 
@@ -112,6 +113,40 @@ namespace exprevaluator {
 	}
 	void jd_to_julian(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
 		detail::jd_to_julian(jd, year, month, day);
+		hms(tod(jd), hour, minute, second);
+	}
+#pragma endregion
+
+#pragma region Islamic
+	// Julian day from Islamic
+	namespace detail {
+		jd_t islamic_to_jd(year_t year, month_t month, day_t day) {
+			long long a{ static_cast<long long>(ceil(29.5 * (month - 1))) };
+			long long b{ 354 * (year - 1) };
+			long long c{ static_cast<long long>(floor((3 + 11 * year) / 30.0)) };
+
+			return day + a + b + c + ISLAMIC_EPOCH - 1;
+		}
+	}
+	jd_t islamic_to_jd(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t seconds) {
+		tod_t time_of_day{ tod(hour, minute, seconds) };
+		if (time_of_day >= 0.5)
+			time_of_day -= 1;
+		return detail::islamic_to_jd(year, month, day) + time_of_day;
+	}
+
+	// Islamic from Julian day
+	namespace detail {
+		void jd_to_islamic(jd_t jd, year_t& year, month_t& month, day_t& day) {
+			jd = floor(jd) + 0.5;
+
+			year = floor((30 * (jd - ISLAMIC_EPOCH) + 10'646) / 10'631);
+			month = std::min(static_cast<month_t>(ceil(((jd - (29 + islamic_to_jd(year, 1, 1))) / 29.5)) + 1), 12);
+			day = jd - islamic_to_jd(year, month, 1) + 1;
+		}
+	}
+	void jd_to_islamic(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
+		detail::jd_to_islamic(jd, year, month, day);
 		hms(tod(jd), hour, minute, second);
 	}
 #pragma endregion
