@@ -25,6 +25,7 @@
   ============================================================= */
 
 #include "token.hpp"
+#include "../../0. utilities/utilities.hpp"
 #include <cassert>
 #include <deque>
 #include <stack>
