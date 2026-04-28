@@ -28,6 +28,7 @@
     <ClCompile Include="..\1. Token\src\boolean.cpp" />
     <ClCompile Include="..\1. Token\src\function.cpp" />
     <ClCompile Include="..\1. Token\src\gregorian.cpp" />
+    <ClCompile Include="..\1. Token\src\julian.cpp" />
     <ClCompile Include="..\1. Token\src\ymd.cpp" />
     <ClCompile Include="..\1. Token\src\integer.cpp" />
     <ClCompile Include="..\1. Token\src\operand.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="..\1. Token\inc\boolean.hpp" />
     <ClInclude Include="..\1. Token\inc\function.hpp" />
     <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
+    <ClInclude Include="..\1. Token\inc\julian.hpp" />
     <ClInclude Include="..\1. Token\inc\ymd.hpp" />
     <ClInclude Include="..\1. Token\inc\integer.hpp" />
     <ClInclude Include="..\1. Token\inc\operand.hpp" />
@@ -87,26 +89,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -195,7 +197,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

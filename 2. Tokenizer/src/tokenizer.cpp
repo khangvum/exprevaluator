@@ -49,6 +49,7 @@ namespace exprevaluator {
 		keywords_["false"]		= keywords_["False"]		= keywords_["FALSE"]		= make<False>();
 		keywords_["floor"]		= keywords_["Floor"]		= keywords_["FLOOR"]		= make<Floor>();
 		keywords_["gregorian"]	= keywords_["Gregorian"]	= keywords_["GREGORIAN"]	= make<GregorianFunc>();
+		keywords_["julian"]		= keywords_["Julian"]		= keywords_["JULIAN"]		= make<JulianFunc>();
 		keywords_["lb"]			= keywords_["Lb"]			= keywords_["LB"]			= make<Lb>();
 		keywords_["ln"]			= keywords_["Ln"]			= keywords_["LN"]			= make<Ln>();
 		keywords_["log"]		= keywords_["Log"]			= keywords_["LOG"]			= make<Log>();
