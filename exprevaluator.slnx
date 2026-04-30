@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="exprevaluator/exprevaluator.vcxproj" Id="68ccb4f5-c574-46de-8a36-f8d442cc3d16" />
+</Solution>
