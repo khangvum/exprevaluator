@@ -43,7 +43,7 @@ namespace exprevaluator {
 					second_t	- The second of the minute
 		\return		jd_t		- The Julian day
 	*/
-	jd_t islamic_to_jd(year_t year, month_t month, day_t day,hour_t hour = hour_t(0), minute_t minute = minute_t(0), second_t second = second_t(0.0));
+	jd_t islamic_to_jd(year_t year, month_t month, day_t day, hour_t hour = hour_t(0), minute_t minute = minute_t(0), second_t second = second_t(0.0));
 
 	/*	\brief		Convert to Islamic from Julian day
 		\param		jd_t		- The Julian day

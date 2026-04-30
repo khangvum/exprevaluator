@@ -1,9 +1,9 @@
 #pragma once
-/*! \file	    utilities.hpp
-	\brief	    <utilities> header file
-	\author	    Manh Khang Vu
-	\date	    2024-12-03
-	\copyright	Manh Khang Vu
+/*! \file	    def.cpp
+	\brief	    Calendar definitions and type aliases
+    \author	    Manh Khang Vu
+    \date	    2025-04-02
+    \copyright	Manh Khang Vu
 
   =============================================================
   Revision History
@@ -21,9 +21,4 @@
 
   ============================================================= */
 
-#include "inc/def.hpp"
-#include "inc/constants.hpp"
-#include "inc/helper.hpp"
-#include "inc/julian_day.hpp"
-#include "inc/system.hpp"
-#include "inc/time_of_day.hpp"
+#include "../inc/def.hpp"

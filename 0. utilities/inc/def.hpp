@@ -1,6 +1,6 @@
 #pragma once
-/*! \file	    calendar.hpp
-	\brief	    Calendar utilities and type aliases
+/*! \file	    def.hpp
+	\brief	    Calendar definitions and type aliases
 	\author	    Manh Khang Vu
 	\date	    2025-04-02
 	\copyright	Manh Khang Vu

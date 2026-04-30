@@ -46,14 +46,14 @@ namespace exprevaluator {
 		minute_ = minute_t(tm_now.tm_min);
 		second_ = second_t(tm_now.tm_sec);
 
-		// Convert Islamic to Islamic day
+		// Convert Islamic to Julian day
 		jd_t jd{ islamic_to_jd(year_, month_, day_, hour_, minute_, second_) };
 
-		// Convert Islamic day to Islamic
+		// Convert Julian day to Islamic
 		from_jd(jd);
 	}
 
-	// Islamic constructor from Islamic day
+	// Islamic constructor from Julian day
 	Islamic::Islamic(const Jd& jd) {
 		from_jd(jd.jd());
 	}
@@ -68,7 +68,7 @@ namespace exprevaluator {
 			<< (hour_ % 12 == 0 ? 12 : hour_ % 12) << ":"
 			<< setfill('0') << setw(2) << minute_ << ":"
 			<< setfill('0') << setw(2) << second_ << " "
-			<< (hour_ < 12 ? "am" : "pm");
+			<< (hour_ < 12 ? "AM" : "PM");
 		return oss.str();
 	}
 
