@@ -60,7 +60,6 @@ namespace exprevaluator {
 		using value_type = jd_t;
 		DEF_POINTER_TYPE(Julian)
 	private:
-		// Julian values
 		year_t		year_{ -4713 };
 		month_t		month_{ November };
 		day_t		day_{ 24 };

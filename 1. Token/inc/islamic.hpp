@@ -62,7 +62,6 @@ namespace exprevaluator {
 		using value_type = jd_t;
 		DEF_POINTER_TYPE(Islamic)
 	private:
-		// Julian values
 		year_t		year_{ -949 };
 		month_t		month_{ Ramadan };
 		day_t		day_{ 24 };
