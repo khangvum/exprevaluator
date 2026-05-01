@@ -72,7 +72,7 @@
     <ClCompile Include="exprevaluator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\0. utilities\src\calendar.cpp">
+    <ClCompile Include="..\0. utilities\src\def.cpp">
       <Filter>Source Files\0. utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\0. utilities\src\constants.cpp">
@@ -144,9 +144,12 @@
     <ClCompile Include="..\1. Token\src\islamic.cpp">
       <Filter>Source Files\1. Token\Operand</Filter>
     </ClCompile>
+    <ClCompile Include="..\1. Token\src\hebrew.cpp">
+      <Filter>Source Files\1. Token\Operand</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\0. utilities\inc\calendar.hpp">
+    <ClInclude Include="..\0. utilities\inc\def.hpp">
       <Filter>Header Files\0. utilities</Filter>
     </ClInclude>
     <ClInclude Include="..\0. utilities\inc\constants.hpp">
@@ -224,10 +227,13 @@
     <ClInclude Include="..\1. Token\inc\julian.hpp">
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
-    <ClInclude Include="..\1. Token\inc\calendar.hpp">
+    <ClInclude Include="..\1. Token\inc\islamic.hpp">
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
-    <ClInclude Include="..\1. Token\inc\islamic.hpp">
+    <ClInclude Include="..\1. Token\inc\hebrew.hpp">
+      <Filter>Header Files\1. Token\Operand</Filter>
+    </ClInclude>
+    <ClInclude Include="..\1. Token\inc\calendar.hpp">
       <Filter>Header Files\1. Token\Operand</Filter>
     </ClInclude>
   </ItemGroup>

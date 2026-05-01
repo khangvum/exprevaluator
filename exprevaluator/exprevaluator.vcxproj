@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\0. utilities\src\calendar.cpp" />
+    <ClCompile Include="..\0. utilities\src\def.cpp" />
     <ClCompile Include="..\0. utilities\src\constants.cpp" />
     <ClCompile Include="..\0. utilities\src\helper.cpp" />
     <ClCompile Include="..\0. utilities\src\julian_day.cpp" />
@@ -28,6 +28,7 @@
     <ClCompile Include="..\1. Token\src\boolean.cpp" />
     <ClCompile Include="..\1. Token\src\function.cpp" />
     <ClCompile Include="..\1. Token\src\gregorian.cpp" />
+    <ClCompile Include="..\1. Token\src\hebrew.cpp" />
     <ClCompile Include="..\1. Token\src\islamic.cpp" />
     <ClCompile Include="..\1. Token\src\julian.cpp" />
     <ClCompile Include="..\1. Token\src\ymd.cpp" />
@@ -46,7 +47,7 @@
     <ClCompile Include="exprevaluator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\0. utilities\inc\calendar.hpp" />
+    <ClInclude Include="..\0. utilities\inc\def.hpp" />
     <ClInclude Include="..\0. utilities\inc\constants.hpp" />
     <ClInclude Include="..\0. utilities\inc\helper.hpp" />
     <ClInclude Include="..\0. utilities\inc\julian_day.hpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="..\1. Token\inc\calendar.hpp" />
     <ClInclude Include="..\1. Token\inc\function.hpp" />
     <ClInclude Include="..\1. Token\inc\gregorian.hpp" />
+    <ClInclude Include="..\1. Token\inc\hebrew.hpp" />
     <ClInclude Include="..\1. Token\inc\islamic.hpp" />
     <ClInclude Include="..\1. Token\inc\julian.hpp" />
     <ClInclude Include="..\1. Token\inc\ymd.hpp" />
