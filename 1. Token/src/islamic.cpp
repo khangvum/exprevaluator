@@ -25,6 +25,7 @@
   ============================================================= */
 
 #include "../inc/islamic.hpp"
+#include "../inc/gregorian.hpp"
 #include "../inc/boolean.hpp"
 #include "../inc/integer.hpp"
 #include "../inc/ymd.hpp"
@@ -46,8 +47,8 @@ namespace exprevaluator {
 		minute_ = minute_t(tm_now.tm_min);
 		second_ = second_t(tm_now.tm_sec);
 
-		// Convert Islamic to Julian day
-		jd_t jd{ islamic_to_jd(year_, month_, day_, hour_, minute_, second_) };
+		// Convert Gregorian to Julian day
+		jd_t jd{ gregorian_to_jd(year_, month_, day_, hour_, minute_, second_) };
 
 		// Convert Julian day to Islamic
 		from_jd(jd);

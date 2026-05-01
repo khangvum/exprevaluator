@@ -47,7 +47,7 @@ namespace exprevaluator {
 		minute_ = minute_t(tm_now.tm_min);
 		second_ = second_t(tm_now.tm_sec);
 
-		// Convert Julian to Julian day
+		// Convert Gregorian to Julian day
 		jd_t jd{ gregorian_to_jd(year_, month_, day_, hour_, minute_, second_) };
 
 		// Convert Julian day to Julian
