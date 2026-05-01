@@ -62,6 +62,7 @@
 #include "julian.hpp"
 #include "islamic.hpp"
 #include "hebrew.hpp"
+#include "vulcan.hpp"
 #include "ymd.hpp"
 #include <stdexcept>
 
@@ -371,7 +372,7 @@ namespace exprevaluator {
 						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
 
 						month_t months_in_year{ hebrew_months_in_year(year) };
-						if (month < 1 || month > months_in_year)
+						if (month < Nisan || month > months_in_year)
 							throw std::runtime_error("Month must be an integer in the range [1," + std::to_string(months_in_year) + "]");
 
 						day_t days_in_month{ hebrew_days_in_month(year, month) };
@@ -379,6 +380,24 @@ namespace exprevaluator {
 							throw std::runtime_error("Month of " + std::string(hebrew_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
 
 						return convert<Operand>(make<Hebrew>(hebrew_to_jd(year, month, day)));
+					}
+				};
+
+				// VulcanFunc class
+				class VulcanFunc : public ThreeArgFunction {
+				public:
+					DEFINE_PURE_OPERATION(perform) {
+						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+						if (month < Zat || month > Tasmeen)
+							throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+						if (day < 1 || day > vulcan_days_in_month())
+							throw std::runtime_error("Month of " + std::string(vulcan_month_name(month)) + " must be an integer in the range [1," + std::to_string(vulcan_days_in_month()) + "]");
+
+						return convert<Operand>(make<Vulcan>(vulcan_to_jd(year, month, day)));
 					}
 				};
 }	// End of namespace exprevaluator

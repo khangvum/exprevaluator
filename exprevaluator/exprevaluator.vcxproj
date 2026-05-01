@@ -31,6 +31,7 @@
     <ClCompile Include="..\1. Token\src\hebrew.cpp" />
     <ClCompile Include="..\1. Token\src\islamic.cpp" />
     <ClCompile Include="..\1. Token\src\julian.cpp" />
+    <ClCompile Include="..\1. Token\src\vulcan.cpp" />
     <ClCompile Include="..\1. Token\src\ymd.cpp" />
     <ClCompile Include="..\1. Token\src\integer.cpp" />
     <ClCompile Include="..\1. Token\src\operand.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="..\1. Token\inc\hebrew.hpp" />
     <ClInclude Include="..\1. Token\inc\islamic.hpp" />
     <ClInclude Include="..\1. Token\inc\julian.hpp" />
+    <ClInclude Include="..\1. Token\inc\vulcan.hpp" />
     <ClInclude Include="..\1. Token\inc\ymd.hpp" />
     <ClInclude Include="..\1. Token\inc\integer.hpp" />
     <ClInclude Include="..\1. Token\inc\operand.hpp" />
