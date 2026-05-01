@@ -5,8 +5,7 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-	Definition of the Julian classes derived from Calendar
-	class
+  Definition of the Julian classes derived from Calendar class
 
   =============================================================
   Revision History

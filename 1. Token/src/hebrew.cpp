@@ -5,8 +5,7 @@
 	\copyright	Manh Khang Vu
 
   =============================================================
-	Definition of the Hebrew classes derived from Calendar
-	class
+  Definition of the Hebrew classes derived from Calendar class
 
   =============================================================
   Revision History
