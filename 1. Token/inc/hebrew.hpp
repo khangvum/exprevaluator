@@ -247,6 +247,6 @@ namespace exprevaluator {
 	// Hebrew + (integer year)
 	Hebrew operator + (const Hebrew& date, const detail::packaged_year_integer& year);
 
-	// Julian - (integer year)
+	// Hebrew - (integer year)
 	inline Hebrew operator - (const Hebrew& date, const detail::packaged_year_integer& year) { return date + detail::packaged_year_integer(-year.years_); }
 }	// End of namespace exprevaluator

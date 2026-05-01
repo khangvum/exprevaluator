@@ -204,6 +204,6 @@ namespace exprevaluator {
 	// Islamic + (integer year)
 	Islamic operator + (const Islamic& date, const detail::packaged_year_integer& year);
 
-	// Julian - (integer year)
+	// Islamic - (integer year)
 	inline Islamic operator - (const Islamic& date, const detail::packaged_year_integer& year) { return date + detail::packaged_year_integer(-year.years_); }
 }	// End of namespace exprevaluator
