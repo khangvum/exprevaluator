@@ -54,6 +54,7 @@ namespace exprevaluator {
 		keywords_["islamic"]	= keywords_["Islamic"]		= keywords_["ISLAMIC"]		= make<IslamicFunc>();
 		keywords_["islamicnow"] = keywords_["IslamicNow"]	= keywords_["ISLAMICNOW"]	= make<IslamicNow>();
 		keywords_["julian"]		= keywords_["Julian"]		= keywords_["JULIAN"]		= make<JulianFunc>();
+		keywords_["juliannow"]	= keywords_["JulianNow"]	= keywords_["JULIANNOW"]	= make<JulianNow>();
 		keywords_["lb"]			= keywords_["Lb"]			= keywords_["LB"]			= make<Lb>();
 		keywords_["ln"]			= keywords_["Ln"]			= keywords_["LN"]			= make<Ln>();
 		keywords_["log"]		= keywords_["Log"]			= keywords_["LOG"]			= make<Log>();

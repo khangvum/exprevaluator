@@ -135,6 +135,12 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
+	// Julian Now class
+	class JulianNow : public Julian {
+	public:
+		JulianNow() : Julian() {}
+	};
+
 	// Constants
 	// Julian day of the start of the Julian epoch
 	constexpr jd_t JULIAN_EPOCH{ 1'721'423.5 };
