@@ -38,6 +38,7 @@
 			class GregorianFunc
 			class JulianFunc
 			class IslamicFunc
+			class HebrewFunc
 
   =============================================================
   Revision History
@@ -60,6 +61,7 @@
 #include "gregorian.hpp"
 #include "julian.hpp"
 #include "islamic.hpp"
+#include "hebrew.hpp"
 #include "ymd.hpp"
 #include <stdexcept>
 
@@ -357,6 +359,26 @@ namespace exprevaluator {
 							throw std::runtime_error("Month of " + std::string(islamic_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
 
 						return convert<Operand>(make<Islamic>(islamic_to_jd(year, month, day)));
+					}
+				};
+
+				// HebrewFunc class
+				class HebrewFunc : public ThreeArgFunction {
+				public:
+					DEFINE_PURE_OPERATION(perform) {
+						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+						month_t months_in_year{ hebrew_months_in_year(year) };
+						if (month < 1 || month > months_in_year)
+							throw std::runtime_error("Month must be an integer in the range [1," + std::to_string(months_in_year) + "]");
+
+						day_t days_in_month{ hebrew_days_in_month(year, month) };
+						if (day < 1 || day > days_in_month)
+							throw std::runtime_error("Month of " + std::string(hebrew_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+						return convert<Operand>(make<Hebrew>(hebrew_to_jd(year, month, day)));
 					}
 				};
 }	// End of namespace exprevaluator
