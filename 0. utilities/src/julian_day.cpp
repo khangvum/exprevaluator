@@ -29,6 +29,7 @@
 #include "../../1. Token/inc/julian.hpp"
 #include "../../1. Token/inc/islamic.hpp"
 #include "../../1. Token/inc/hebrew.hpp"
+#include "../../1. Token/inc/vulcan.hpp"
 #include <time.h>
 using namespace std;
 
@@ -208,6 +209,52 @@ namespace exprevaluator {
 	void jd_to_hebrew(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
 		detail::jd_to_hebrew(jd, year, month, day);
 		hms(tod(jd), hour, minute, second);
+	}
+#pragma endregion
+
+#pragma region Vulcan
+	// Julian day from Vulcan
+	namespace detail {
+		jd_t vulcan_to_jd(year_t year, month_t month, day_t day) {
+			return VULCAN_EPOCH + (year - 1 + (month - 1) / 12.0 + (day - 1) / 252.0) * 266.4;
+		}
+	}
+	jd_t vulcan_to_jd(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t seconds) {
+		const double h{ hour / 18.0 * EARTH_DAY_PER_VULCAN_DAY };
+		const double m{ minute / (54.0 * 18.0) * EARTH_DAY_PER_VULCAN_DAY };
+		const double s{ seconds / (54.0 * 54.0 * 18.0) * EARTH_DAY_PER_VULCAN_DAY };
+		return detail::vulcan_to_jd(year, month, day) + h + m + s;
+	}
+
+	// Vulcan from Julian day
+	namespace detail {
+		void jd_to_vulcan(jd_t& jd, year_t& year, month_t& month, day_t& day) {
+			jd = (jd - VULCAN_EPOCH) / 266.4;
+
+			year = static_cast<year_t>(floor(jd) + 1);
+			jd -= (year - 1);
+
+			month = static_cast<month_t>(floor(jd * 12) + 1);
+			jd -= (month - 1) / 12.0;
+
+			day = static_cast<day_t>(floor(jd * 252) + 1);
+			jd -= (day - 1) / 252.0;
+		}
+	}
+	void jd_to_vulcan(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
+		detail::jd_to_vulcan(jd, year, month, day);
+		
+		// Calculate the time of day
+		tod_t tod{ jd * 252 };
+
+		double total_hours{ tod * 18.0 };
+		hour = static_cast<hour_t>(tod * 18.0);
+
+		double remaining{ (total_hours - hour) * 54.0 }; // Vulcan hour has 54 minutes
+		minute = static_cast<minute_t>(remaining);
+
+		remaining = (remaining - minute) * 54.0; // Vulcan minute has 54 seconds
+		second = static_cast<second_t>(remaining);
 	}
 #pragma endregion
 }	// End of namespace exprevaluator
