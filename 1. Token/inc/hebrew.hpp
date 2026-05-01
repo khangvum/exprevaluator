@@ -153,7 +153,7 @@ namespace exprevaluator {
 		\return		bool	- Whether the year is a leap year
 	*/
 	inline bool is_hebrew_leapyear(year_t year) {
-		return utility::mod(7 * year + 1, 19) < 7;
+		return utility::mod(7.0 * year + 1.0, 19.0) < 7;
 	}
 
 	/*	\brief		Return the number of months in a Hebrew year
@@ -201,7 +201,7 @@ namespace exprevaluator {
 		\return		day_t	- The number of days in the Hebrew year
 	*/
 	inline day_t hebrew_days_in_year(year_t year) {
-		return hebrew_to_jd(year + 1, Tishri, 1) - hebrew_to_jd(year, Tishri, 1);
+		return static_cast<day_t>(hebrew_to_jd(year + 1, Tishri, 1) - hebrew_to_jd(year, Tishri, 1));
 	}
 
 	/*	\brief		Return the number of days in a Hebrew month
