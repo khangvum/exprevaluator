@@ -28,6 +28,7 @@
 #include "../../1. Token/inc/gregorian.hpp"
 #include "../../1. Token/inc/julian.hpp"
 #include "../../1. Token/inc/islamic.hpp"
+#include "../../1. Token/inc/hebrew.hpp"
 #include <time.h>
 using namespace std;
 
@@ -147,6 +148,65 @@ namespace exprevaluator {
 	}
 	void jd_to_islamic(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
 		detail::jd_to_islamic(jd, year, month, day);
+		hms(tod(jd), hour, minute, second);
+	}
+#pragma endregion
+
+#pragma region Hebrew
+	// Julian day from Hebrew
+	namespace detail {
+		jd_t hebrew_to_jd(year_t year, month_t month, day_t day) {
+			assert(month >= 1 && "Minimum month is Nisan = 1");
+			assert(month <= 13 && "Maximum month is Veadar = 13");
+			assert(day >= 1 && "Minimum day of the month is 1");
+			assert(day <= 30 && "Maximum day of the month is 30");
+
+			jd_t jdn{ HEBREW_EPOCH + hebrew_delay_of_week(year) + hebrew_delay_adjacent_year(year) + day + 1 };
+
+			if (month < 7) {
+				for (month_t m{ 7 }; m <= hebrew_months_in_year(year); ++m)
+					jdn += hebrew_days_in_month(year, m);
+				for (month_t m{ 1 }; m < month; ++m)
+					jdn += hebrew_days_in_month(year, m);
+			}
+			else {
+				for (month_t m{ 7 }; m < month; ++m)
+					jdn += hebrew_days_in_month(year, m);
+			}
+
+			return jdn;
+		}
+	}
+	jd_t hebrew_to_jd(year_t year, month_t month, day_t day, hour_t hour, minute_t minute, second_t seconds) {
+		tod_t time_of_day{ tod(hour, minute, seconds) };
+		if (time_of_day >= 0.5)
+			time_of_day -= 1;
+		return detail::hebrew_to_jd(year, month, day) + time_of_day;
+	}
+
+	// Hebrew from Julian day
+	namespace detail {
+		void jd_to_hebrew(jd_t jd, year_t& year, month_t& month, day_t& day) {
+			jd = floor(jd) + 0.5;
+
+			// Year
+			double count{ floor((jd - HEBREW_EPOCH) * 98'496 / 35'975'351) };
+			year = static_cast<year_t>(count - 1);
+			while (jd >= hebrew_to_jd(year + 1, 7, 1))
+				++year;
+
+			// Month
+			month_t first{ jd < hebrew_to_jd(year, 1, 1) ? 7 : 1 };
+			month = first;
+			while (jd > hebrew_to_jd(year, month, hebrew_days_in_month(year, month)))
+				++month;
+
+			// Day
+			day = static_cast<day_t>(floor(jd - hebrew_to_jd(year, month, 1) + 1));
+		}
+	}
+	void jd_to_hebrew(jd_t jd, year_t& year, month_t& month, day_t& day, hour_t& hour, minute_t& minute, second_t& second) {
+		detail::jd_to_hebrew(jd, year, month, day);
 		hms(tod(jd), hour, minute, second);
 	}
 #pragma endregion
