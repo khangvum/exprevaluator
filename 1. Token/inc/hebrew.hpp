@@ -137,6 +137,7 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
+	// Hebrew Now class
 	class HebrewNow : public Hebrew {
 	public:
 		HebrewNow() : Hebrew() {}
