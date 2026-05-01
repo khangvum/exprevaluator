@@ -137,6 +137,12 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
+	// Islamic Now class
+	class IslamicNow : public Islamic {
+	public:
+		IslamicNow() : Islamic() {}
+	};
+
 	// Constants
 	// Julian day of the start of the Islamic epoch
 	constexpr jd_t ISLAMIC_EPOCH{ 1'948'439.5 };
