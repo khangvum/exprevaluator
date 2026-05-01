@@ -137,6 +137,12 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
+	// Vulcan Now class
+	class VulcanNow : public Vulcan {
+	public:
+		VulcanNow() : Vulcan() {}
+	};
+
 	// Constants
 	// Julian day of the start of the Vulcan epoch
 	constexpr jd_t VULCAN_EPOCH{ 173'651.6 };

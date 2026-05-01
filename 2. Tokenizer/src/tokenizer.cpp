@@ -75,6 +75,8 @@ namespace exprevaluator {
 		keywords_["sqrt"]		= keywords_["Sqrt"]			= keywords_["SQRT"]			= make<Sqrt>();
 		keywords_["tan"]		= keywords_["Tan"]			= keywords_["TAN"]			= make<Tan>();
 		keywords_["true"]		= keywords_["True"]			= keywords_["TRUE"]			= make<True>();
+		keywords_["vulcan"]		= keywords_["Vulcan"]		= keywords_["VULCAN"]		= make<VulcanFunc>();
+		keywords_["vulcannow"]	= keywords_["VulcanNow"]	= keywords_["VULCANNOW"]	= make<VulcanNow>();
 		keywords_["xnor"]		= keywords_["Xnor"]			= keywords_["XNOR"]			= make<Xnor>();
 		keywords_["xor"]		= keywords_["Xor"]			= keywords_["XOR"]			= make<Xor>();
 		keywords_["year"]		= keywords_["Year"]			= keywords_["YEAR"]			=
