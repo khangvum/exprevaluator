@@ -137,6 +137,11 @@ namespace exprevaluator {
 		OVERRIDE_OPERATION(perform_less_equal)
 	};
 
+	class HebrewNow : public Hebrew {
+	public:
+		HebrewNow() : Hebrew() {}
+	};
+
 	// Constants
 	// Julian day of the start of the Hebrew epoch
 	constexpr jd_t HEBREW_EPOCH{ 347'995.5 };
