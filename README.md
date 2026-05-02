@@ -21,9 +21,9 @@ A Windows console application that **_evaluates mathematical expressions_** invo
   | :----------------: | :---------------------------------------------------------------------------------------------------------------------------------- |
   |  **One-Argument**  | `abs`, `arccos`, `arcsin`, `arctan`, `ceil`, `cos`, `day`, `exp`, `floor`, `month`, `lb`, `ln`, `log`, `sin`, `sqrt`, `tan`, `year` |
   |  **Two-Argument**  | `arctan2`, `max`, `min`, `pow`                                                                                                      |
-  | **Three-Argument** | `gregorian`, `julian`                                                                                                               |
+  | **Three-Argument** | `gregorian`, `julian`, `islamic`, `hebrew`, `vulcan`                                                                                |
 
-- Handles **_multiple data types_**: Boolean, Integer, Real, Variable, Gregorian, and Julian.
+- Handles **_multiple data types_**: Boolean, Integer, Real, Variable, and Calendar.
 - Supports **_nested expressions_** and **_parentheses_** for complex calculations.
 - Simple, fast, and lightweight **_console-based_** interface.
 
