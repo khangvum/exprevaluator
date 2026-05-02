@@ -308,7 +308,7 @@ namespace exprevaluator {
 			public:
 				[[nodiscard]]	virtual unsigned number_of_args() const override { return 3; }
 								virtual void normalize(OperandStack& operand_stack) const override;
-				[[nodiscard]]	virtual Operand::pointer_type perform_calendar(OperandStack& operand_stack) const = 0;
+				[[nodiscard]]	virtual Operand::pointer_type perform_calendar(OperandStack& operand_stack) const { return nullptr; }
 			};
 
 				// GregorianFunc class
