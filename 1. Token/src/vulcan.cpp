@@ -1,7 +1,7 @@
 /*! \file	    vulcan.cpp
 	\brief	    Vulcan class definition
 	\author	    Manh Khang Vu
-	\date	    2026-04-26
+	\date	    2026-04-30
 	\copyright	Manh Khang Vu
 
   =============================================================
@@ -10,6 +10,9 @@
   =============================================================
   Revision History
   -------------------------------------------------------------
+
+  Version 2026.04.30
+	  Added Gregorian data type
 
   Version 2025.04.30
 	  Added Gregorian data type

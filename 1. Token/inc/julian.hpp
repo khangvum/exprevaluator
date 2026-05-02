@@ -7,11 +7,17 @@
 
   =============================================================
   Declarations of the Julian classes derived from Calendar
-  class
+  class, including the subclasses:
+
+		class Julian
+			class JulianNow
 
   =============================================================
   Revision History
   -------------------------------------------------------------
+
+  Version 2026.05.01
+	  Added Julian, Islamic, Hebrew, and Vulcan data types
 
   Version 2025.04.30
 	  Added Gregorian data type
