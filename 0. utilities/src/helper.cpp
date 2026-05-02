@@ -38,7 +38,7 @@ namespace exprevaluator {
 		atexit(restore_codepage);
 
 		set_color(INVERSE_GREY);
-		cout << " Expression Evaluator 1.2.0 "s << copyright << "2025-2026, Manh Khang Vu "s;
+		cout << " Expression Evaluator 1.3.0 "s << copyright << "2025-2026, Manh Khang Vu "s;
 		set_color(WHITE); cout << "\n\n";
 	}
 }	// End of namespace exprevaluator
