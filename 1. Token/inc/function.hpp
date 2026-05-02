@@ -61,6 +61,7 @@
   ============================================================= */
 
 #include "operation.hpp"
+#include "operand.hpp"
 #include "integer.hpp"
 #include "gregorian.hpp"
 #include "julian.hpp"
@@ -307,101 +308,61 @@ namespace exprevaluator {
 			public:
 				[[nodiscard]]	virtual unsigned number_of_args() const override { return 3; }
 								virtual void normalize(OperandStack& operand_stack) const override;
+				[[nodiscard]]	virtual Operand::pointer_type perform_calendar(OperandStack& operand_stack) const = 0;
 			};
 
 				// GregorianFunc class
 				class GregorianFunc : public ThreeArgFunction {
 				public:
+					OVERRIDE_OPERATION(perform_calendar)
+
 					DEFINE_PURE_OPERATION(perform) {
 						normalize(operand_stack);
-						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-
-						if (month < January || month > December)
-							throw std::runtime_error("Month must be an integer in the range [1,12]");
-
-						day_t days_in_month{ civil::days_in_month(month, is_gregorian_leapyear(year)) };
-						if (day < 1 || day > days_in_month)
-                            throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
-
-						return convert<Operand>(make<Gregorian>(gregorian_to_jd(year, month, day)));
+						return perform_calendar(operand_stack);
 					}
 				};
 
 				// JulianFunc class
 				class JulianFunc : public ThreeArgFunction {
 				public:
+					OVERRIDE_OPERATION(perform_calendar)
+
 					DEFINE_PURE_OPERATION(perform) {
-						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-
-						if (month < January || month > December)
-							throw std::runtime_error("Month must be an integer in the range [1,12]");
-
-						day_t days_in_month{ civil::days_in_month(month, is_julian_leapyear(year)) };
-						if (day < 1 || day > days_in_month)
-                            throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
-
-						return convert<Operand>(make<Julian>(julian_to_jd(year, month, day)));
+						normalize(operand_stack);
+						return perform_calendar(operand_stack);
 					}
 				};
 
 				// IslamicFunc class
 				class IslamicFunc : public ThreeArgFunction {
 				public:
+					OVERRIDE_OPERATION(perform_calendar)
+
 					DEFINE_PURE_OPERATION(perform) {
-						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-
-						if (month < 1 || month > DhulHijja)
-							throw std::runtime_error("Month must be an integer in the range [1,12]");
-
-						day_t days_in_month{ islamic_days_in_month(month, is_julian_leapyear(year)) };
-						if (day < 1 || day > days_in_month)
-							throw std::runtime_error("Month of " + std::string(islamic_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
-
-						return convert<Operand>(make<Islamic>(islamic_to_jd(year, month, day)));
+						normalize(operand_stack);
+						return perform_calendar(operand_stack);
 					}
 				};
 
 				// HebrewFunc class
 				class HebrewFunc : public ThreeArgFunction {
 				public:
+					OVERRIDE_OPERATION(perform_calendar)
+
 					DEFINE_PURE_OPERATION(perform) {
-						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-
-						month_t months_in_year{ hebrew_months_in_year(year) };
-						if (month < Nisan || month > months_in_year)
-							throw std::runtime_error("Month must be an integer in the range [1," + std::to_string(months_in_year) + "]");
-
-						day_t days_in_month{ hebrew_days_in_month(year, month) };
-						if (day < 1 || day > days_in_month)
-							throw std::runtime_error("Month of " + std::string(hebrew_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
-
-						return convert<Operand>(make<Hebrew>(hebrew_to_jd(year, month, day)));
+						normalize(operand_stack);
+						return perform_calendar(operand_stack);
 					}
 				};
 
 				// VulcanFunc class
 				class VulcanFunc : public ThreeArgFunction {
 				public:
+					OVERRIDE_OPERATION(perform_calendar)
+
 					DEFINE_PURE_OPERATION(perform) {
-						auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-						auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
-
-						if (month < Zat || month > Tasmeen)
-							throw std::runtime_error("Month must be an integer in the range [1,12]");
-
-						if (day < 1 || day > vulcan_days_in_month())
-							throw std::runtime_error("Month of " + std::string(vulcan_month_name(month)) + " must be an integer in the range [1," + std::to_string(vulcan_days_in_month()) + "]");
-
-						return convert<Operand>(make<Vulcan>(vulcan_to_jd(year, month, day)));
+						normalize(operand_stack);
+						return perform_calendar(operand_stack);
 					}
 				};
 }	// End of namespace exprevaluator

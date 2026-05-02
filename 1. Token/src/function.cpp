@@ -107,4 +107,79 @@ namespace exprevaluator {
 			operand_stack.push(move(operands[i]));
 		}
 	}
+
+	DEFINE_OPERATION(GregorianFunc, perform_calendar) {
+		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+		if (month < January || month > December)
+			throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+		day_t days_in_month{ civil::days_in_month(month, is_gregorian_leapyear(year)) };
+		if (day < 1 || day > days_in_month)
+			throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+		return convert<Operand>(make<Gregorian>(gregorian_to_jd(year, month, day)));
+	}
+
+	DEFINE_OPERATION(JulianFunc, perform_calendar) {
+		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+		if (month < January || month > December)
+			throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+		day_t days_in_month{ civil::days_in_month(month, is_julian_leapyear(year)) };
+		if (day < 1 || day > days_in_month)
+			throw std::runtime_error("Month of " + std::string(civil::month_name_long(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+		return convert<Operand>(make<Julian>(julian_to_jd(year, month, day)));
+	}
+
+	DEFINE_OPERATION(IslamicFunc, perform_calendar) {
+		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+		if (month < 1 || month > DhulHijja)
+			throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+		day_t days_in_month{ islamic_days_in_month(month, is_islamic_leapyear(year)) };
+		if (day < 1 || day > days_in_month)
+			throw std::runtime_error("Month of " + std::string(islamic_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+		return convert<Operand>(make<Islamic>(islamic_to_jd(year, month, day)));
+	}
+
+	DEFINE_OPERATION(HebrewFunc, perform_calendar) {
+		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+		month_t months_in_year{ hebrew_months_in_year(year) };
+		if (month < Nisan || month > months_in_year)
+			throw std::runtime_error("Month must be an integer in the range [1," + std::to_string(months_in_year) + "]");
+
+		day_t days_in_month{ hebrew_days_in_month(year, month) };
+		if (day < 1 || day > days_in_month)
+			throw std::runtime_error("Month of " + std::string(hebrew_month_name(month)) + " must be an integer in the range [1," + std::to_string(days_in_month) + "]");
+
+		return convert<Operand>(make<Hebrew>(hebrew_to_jd(year, month, day)));
+	}
+
+	DEFINE_OPERATION(VulcanFunc, perform_calendar) {
+		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+		auto year{ static_cast<year_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
+
+		if (month < Zat || month > Tasmeen)
+			throw std::runtime_error("Month must be an integer in the range [1,12]");
+
+		if (day < 1 || day > vulcan_days_in_month())
+			throw std::runtime_error("Month of " + std::string(vulcan_month_name(month)) + " must be an integer in the range [1," + std::to_string(vulcan_days_in_month()) + "]");
+
+		return convert<Operand>(make<Vulcan>(vulcan_to_jd(year, month, day)));
+	}
 }	// End of namespace exprevaluator

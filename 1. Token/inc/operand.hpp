@@ -1,6 +1,6 @@
 #pragma once
 /*! \file	    operand.hpp
-	\brief	    Operand class declaration and utilities
+    \brief	    Operand class declaration and utilities
     \author	    Manh Khang Vu
     \date	    2025-01-06
     \copyright	Manh Khang Vu
@@ -34,11 +34,12 @@
 #include <stack>
 
 namespace exprevaluator {
+
     // Operand base class
     class Operand : public Token {
     public:
         DEF_POINTER_TYPE(Operand)
-            using operand_list_type = std::deque<Operand::pointer_type>;
+        using operand_list_type = std::deque<Operand::pointer_type>;
         using operand_stack_type = std::stack<Operand::pointer_type>;
 
         // Operations
@@ -116,15 +117,15 @@ namespace exprevaluator {
     // Get the value from an operand
     template <typename OPERAND_TYPE> [[nodiscard]]
         typename OPERAND_TYPE::value_type value_of(Token::pointer_type operand) {
-            assert(is<OPERAND_TYPE>(operand));
-            return dynamic_cast<OPERAND_TYPE*>(operand.get())->value();
-        }
+        assert(is<OPERAND_TYPE>(operand));
+        return dynamic_cast<OPERAND_TYPE*>(operand.get())->value();
+    }
 
-        // Type for a list & stack of operands
-        using OperandList = Operand::operand_list_type;
-        using OperandStack = Operand::operand_stack_type;
+    // Type for a list & stack of operands
+    using OperandList = Operand::operand_list_type;
+    using OperandStack = Operand::operand_stack_type;
 
-        // Macros for defining operations & overriding operations in subclasses
+    // Macros for defining operations & overriding operations in subclasses
 #define DEFINE_OPERATION(class_name, name)\
         [[nodiscard]] Operand::pointer_type class_name::name(OperandStack& operand_stack) const
 #define OVERRIDE_OPERATION(name)\
