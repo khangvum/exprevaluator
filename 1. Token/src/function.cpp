@@ -32,9 +32,17 @@
 #include "../inc/integer.hpp"
 #include "../inc/real.hpp"
 #include "../inc/variable.hpp"
+
+#include "../inc/gregorian.hpp"
+#include "../inc/julian.hpp"
+#include "../inc/islamic.hpp"
+#include "../inc/hebrew.hpp"
+#include "../inc/vulcan.hpp"
+#include "../inc/ymd.hpp"
 using namespace std;
 
 namespace exprevaluator {
+	// Normalize the operands for functions
 	void OneArgFunction::normalize(OperandStack& operand_stack) const {
 		auto operand{ operand_stack.top() }; operand_stack.pop();
 		if (!is<Variable>(operand)) {
@@ -108,6 +116,7 @@ namespace exprevaluator {
 		}
 	}
 
+	// Calendar functions
 	DEFINE_OPERATION(GregorianFunc, perform_calendar) {
 		auto day{ static_cast<day_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
 		auto month{ static_cast<month_t>(value_of<Integer>(operand_stack.top())) }; operand_stack.pop();
