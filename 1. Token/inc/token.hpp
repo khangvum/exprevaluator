@@ -58,12 +58,21 @@ namespace exprevaluator {
 	template<typename T> [[nodiscard]] inline
 		Token::pointer_type make() { return Token::pointer_type(new T); }
 
-	/*	\brief		Make a new smart-pointer managed Token object with constructor parameter
+	/*	\brief		Make a new smart-pointer managed Token object with one constructor parameter
 		\param		const U& param		- The constructor parameter
 		\return		Token::pointer_type	- A pointer to the token
 	*/
 	template<typename T, typename U> [[nodiscard]] inline
 		Token::pointer_type make(const U& param) { return Token::pointer_type(new T(param)); }
+
+	/*	\brief		Make a new smart-pointer managed Token object with unlimited constructor parameters
+		\param		Args&&... args		- The constructor parameters
+		\return		Token::pointer_type	- A pointer to the token
+	*/
+	template<typename T, typename... Args>
+	[[nodiscard]] inline Token::pointer_type make(Args&&... args) {
+		return Token::pointer_type(new T(std::forward<Args>(args)...));
+	}
 
 	/*	\brief		Compare two tokens for same value
 		\param		const Token::pointer_type& lhs	- The left-hand side token
