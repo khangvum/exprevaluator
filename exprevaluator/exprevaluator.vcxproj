@@ -141,21 +141,37 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <BoostRoot Condition="'$(BOOST_ROOT)' != ''">$(BOOST_ROOT)</BoostRoot>
+    <BoostRoot Condition="'$(BOOST_ROOT)' == ''">c:\local\boost_1_92_0</BoostRoot>
+  </PropertyGroup>
+  <!-- BOOST_LIBRARYDIR (set by CI) is always the x64 library folder, since the
+       reusable workflow only ever builds Release|x64 - it must not be reused
+       for Win32 configs, so the fallback branches on $(Platform) rather than
+       trusting the env var unconditionally. -->
+  <PropertyGroup Condition="'$(Platform)'=='Win32'">
+    <BoostLibDir>c:\local\boost_1_92_0\lib32-msvc-14.5</BoostLibDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='x64'">
+    <BoostLibDir Condition="'$(BOOST_LIBRARYDIR)' != ''">$(BOOST_LIBRARYDIR)</BoostLibDir>
+    <BoostLibDir Condition="'$(BOOST_LIBRARYDIR)' == ''">c:\local\boost_1_92_0\lib64-msvc-14.5</BoostLibDir>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>c:\local\boost_1_86_0;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\local\boost_1_86_0\lib32-msvc-14.3;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(BoostRoot);$(IncludePath)</IncludePath>
+    <LibraryPath>$(BoostLibDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>c:\local\boost_1_86_0;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\local\boost_1_86_0\lib32-msvc-14.3;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(BoostRoot);$(IncludePath)</IncludePath>
+    <LibraryPath>$(BoostLibDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>c:\local\boost_1_86_0;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\local\boost_1_86_0\lib64-msvc-14.3;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(BoostRoot);$(IncludePath)</IncludePath>
+    <LibraryPath>$(BoostLibDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>c:\local\boost_1_86_0;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\local\boost_1_86_0\lib64-msvc-14.3;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(BoostRoot);$(IncludePath)</IncludePath>
+    <LibraryPath>$(BoostLibDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
