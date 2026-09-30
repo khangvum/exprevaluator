@@ -16,3 +16,4 @@ jobs:
     uses: khangvum/workflows/.github/workflows/cpp-release.yml@main
     with:
       app_name: exprevaluator
+      boost_version: 1.92.0
