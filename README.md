@@ -2,6 +2,9 @@
 
 A Windows console application that **_evaluates mathematical expressions_** involving **_multiple operators_** and **_functions_**. This program supports operations on **_a variety of data types_**, including Boolean, Integer, Real, and Variable.
 
+[![C++ Release Build](https://github.com/khangvum/exprevaluator/actions/workflows/release.yml/badge.svg)](https://github.com/khangvum/exprevaluator/actions/workflows/release.yml)
+[![Security Scan](https://github.com/khangvum/exprevaluator/actions/workflows/security.yml/badge.svg)](https://github.com/khangvum/exprevaluator/actions/workflows/security.yml)
+
 ## Features
 
 - Supports **_various operators_**:
