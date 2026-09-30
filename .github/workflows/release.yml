@@ -1,0 +1,19 @@
+name: C++ Release Build
+
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: khangvum/workflows/.github/workflows/cpp-release.yml@main
+    with:
+      app_name: exprevaluator
+      boost_version: 1.92.0
