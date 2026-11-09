@@ -31,8 +31,7 @@
 #include "../inc/boolean.hpp"
 #include "../inc/integer.hpp"
 #include "../inc/ymd.hpp"
-#include <sstream>
-#include <iomanip>
+#include <format>
 using namespace std;
 
 namespace exprevaluator {
@@ -63,16 +62,11 @@ namespace exprevaluator {
 
 	// Julian value
 	[[nodiscard]] Julian::string_type Julian::str() const {
-		ostringstream oss;
-		oss << civil::day_name(day_of_week(to_jd())) << ", "
-			<< julian_month_name(month_) << " "
-			<< day_ << " "
-			<< (year_ > 0 ? year_ : -year_ + 1) << " " << (year_ > 0 ? "AD" : "BC") << ", "
-			<< (hour_ % 12 == 0 ? 12 : hour_ % 12) << ":"
-			<< setfill('0') << setw(2) << minute_ << ":"
-			<< setfill('0') << setw(2) << second_ << " "
-			<< (hour_ < 12 ? "AM" : "PM");
-		return oss.str();
+		return format("{}, {} {} {} {}, {:02}:{:02}:{:02} {}",
+			civil::day_name(day_of_week(to_jd())), julian_month_name(month_),
+			day_, year_ > 0 ? year_ : -year_ + 1, year_ > 0 ? "AD" : "BC",
+			hour_ % 12 == 0 ? 12 : hour_ % 12, minute_, second_,
+			hour_ < 12 ? "AM" : "PM");
 	}
 
 	// Month addition/subtraction

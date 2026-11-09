@@ -31,19 +31,17 @@
 #include "../inc/boolean.hpp"
 #include "../inc/integer.hpp"
 #include <algorithm>
-#include <iomanip>
-#include <sstream>
+#include <format>
 using namespace std;
 
 namespace exprevaluator {
 	// Real value
 	[[nodiscard]] Real::string_type Real::str() const {
-		ostringstream oss;
-		oss << fixed << setprecision(numeric_limits<value_type>::digits10) << value_;
+		Real::string_type formatted_value{ value_.str(numeric_limits<value_type>::digits10, ios_base::fixed) };
 
 		Integer::pointer_type integral_part{ convert<Integer>(make<Integer>(value_.convert_to<Integer::value_type>())) };
-		size_t decimal_pos{ oss.str().find('.') };
-		Real::string_type fractional_part{ oss.str().substr(decimal_pos) };
+		size_t decimal_pos{ formatted_value.find('.') };
+		Real::string_type fractional_part{ formatted_value.substr(decimal_pos) };
 
 		// Trim the trailing zeros from the fractional part
 		size_t end_pos{ fractional_part.find_last_not_of('0') };
@@ -54,10 +52,7 @@ namespace exprevaluator {
 			fractional_part = fractional_part.substr(0, end_pos + 1);
 		}
 
-		oss.str("");
-		oss.clear();
-		oss << integral_part->str() << fractional_part;
-		return oss.str();
+		return format("{}{}", integral_part->str(), fractional_part);
 	}
 
 	// 1. Unary operators

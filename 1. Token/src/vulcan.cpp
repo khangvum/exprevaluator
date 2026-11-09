@@ -31,8 +31,7 @@
 #include "../inc/boolean.hpp"
 #include "../inc/integer.hpp"
 #include "../inc/ymd.hpp"
-#include <sstream>
-#include <iomanip>
+#include <format>
 using namespace std;
 
 namespace exprevaluator {
@@ -63,14 +62,8 @@ namespace exprevaluator {
 
 	// Vulcan value
 	[[nodiscard]] Vulcan::string_type Vulcan::str() const {
-		ostringstream oss;
-		oss << vulcan_month_name(month_) << " "
-			<< day_ << ", "
-			<< year_ << " "
-			<< hour_ << ":"
-			<< setfill('0') << setw(2) << minute_ << ":"
-			<< setfill('0') << setw(2) << second_;
-		return oss.str();
+		return format("{} {}, {} {:02}:{:02}:{:02}",
+			vulcan_month_name(month_), day_, year_, hour_, minute_, second_);
 	}
 
 	// Day addition/subtraction

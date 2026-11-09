@@ -29,28 +29,22 @@
 
 #include "../inc/ymd.hpp"
 #include "../inc/gregorian.hpp"
-#include <sstream>
+#include <format>
 using namespace std;
 
 namespace exprevaluator {
 	// Year value
 	[[nodiscard]] Year::string_type Year::str() const {
-		ostringstream oss;
-		oss << value_.years_ << " year" << (value_.years_ == 1 ? "" : "s");
-		return oss.str();
+		return std::format("{} year{}", value_.years_, value_.years_ == 1 ? "" : "s");
 	}
 
 	// Month value
 	[[nodiscard]] Month::string_type Month::str() const {
-		ostringstream oss;
-		oss << value_.months_ << " month" << (value_.months_ == 1 ? "" : "s");
-		return oss.str();
+		return std::format("{} month{}", value_.months_, value_.months_ == 1 ? "" : "s");
 	}
 
 	// Day value
 	[[nodiscard]] Day::string_type Day::str() const {
-		ostringstream oss;
-		oss << value_.days_ << " day" << (value_.days_ == 1 ? "" : "s");
-		return oss.str();
+		return std::format("{} day{}", value_.days_, value_.days_ == 1 ? "" : "s");
 	}
 }	// End of namespace exprevaluator
