@@ -31,8 +31,7 @@
 #include "../inc/boolean.hpp"
 #include "../inc/integer.hpp"
 #include "../inc/ymd.hpp"
-#include <sstream>
-#include <iomanip>
+#include <format>
 using namespace std;
 
 namespace exprevaluator {
@@ -63,15 +62,10 @@ namespace exprevaluator {
 
 	// Hebrew value
 	[[nodiscard]] Hebrew::string_type Hebrew::str() const {
-		ostringstream oss;
-		oss << hebrew_month_name(month_) << " "
-			<< day_ << " "
-			<< year_ << ", "
-			<< (hour_ % 12 == 0 ? 12 : hour_ % 12) << ":"
-			<< setfill('0') << setw(2) << minute_ << ":"
-			<< setfill('0') << setw(2) << second_ << " "
-			<< (hour_ < 12 ? "AM" : "PM");
-		return oss.str();
+		return format("{} {} {}, {:02}:{:02}:{:02} {}",
+			hebrew_month_name(month_), day_, year_,
+			hour_ % 12 == 0 ? 12 : hour_ % 12, minute_, second_,
+			hour_ < 12 ? "AM" : "PM");
 	}
 
 	// Month addition/subtraction
