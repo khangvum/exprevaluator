@@ -40,7 +40,7 @@ namespace exprevaluator {
 		atexit(restore_codepage);
 
 		set_color(INVERSE_GREY);
-		print(" Expression Evaluator 1.3.1 {}2025-2026, Manh Khang Vu ", copyright);
+		print(" Expression Evaluator 1.3.2 {}2025-2026, Manh Khang Vu ", copyright);
 		set_color(WHITE); print("\n\n");
 	}
 }	// End of namespace exprevaluator
