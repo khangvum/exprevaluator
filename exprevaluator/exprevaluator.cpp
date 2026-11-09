@@ -24,6 +24,8 @@
   ============================================================= */
 
 #include "exprevaluator.hpp"
+#include <iostream>
+#include <print>
 using namespace std;
 using namespace exprevaluator;
 
@@ -34,21 +36,21 @@ int main()
 
     ExpressionEvaluator expression_evaluator;
     for (size_t count{ 0 }; ; ) {
-        set_color(WHITE);       cout << " > ";
+        set_color(WHITE);       print(" > ");
         string command;
         if (!getline(cin, command) || command.empty())
             break;
 
         try {
             ExpressionEvaluator::result_type result{ expression_evaluator.evaluate(command) };
-            set_color(WHITE);   cout << " [";
-            set_color(GREEN);   cout << ++count; 
-            set_color(WHITE);   cout << "] = ";
-            set_color(CYAN);    cout << result << "\n\n";
+            set_color(WHITE);   print(" [");
+            set_color(GREEN);   print("{}", ++count);
+            set_color(WHITE);   print("] = ");
+            set_color(CYAN);    print("{}\n\n", result->str());
             set_color(WHITE);
         }
         catch (const exception& e) {
-            set_color(YELLOW);  cout << e.what() << "\n\n";
+            set_color(YELLOW);  print("{}\n\n", e.what());
         }
     }
 }
