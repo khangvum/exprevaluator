@@ -26,8 +26,7 @@
 #include "../inc/constants.hpp"
 #include "../inc/helper.hpp"
 #include "../inc/system.hpp"
-#include <iostream>
-#include <iomanip>
+#include <print>
 using namespace std;
 
 namespace exprevaluator {
@@ -41,7 +40,7 @@ namespace exprevaluator {
 		atexit(restore_codepage);
 
 		set_color(INVERSE_GREY);
-		cout << " Expression Evaluator 1.3.1 "s << copyright << "2025-2026, Manh Khang Vu "s;
-		set_color(WHITE); cout << "\n\n";
+		print(" Expression Evaluator 1.3.1 {}2025-2026, Manh Khang Vu ", copyright);
+		set_color(WHITE); print("\n\n");
 	}
 }	// End of namespace exprevaluator
